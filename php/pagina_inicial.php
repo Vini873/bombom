@@ -6,6 +6,7 @@
     <title>Página de registro</title>
     <link rel="stylesheet" href="../CSS/style.cssSA.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 </head>
@@ -14,19 +15,12 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block p-0">
                 <div class="container" style="max-width: 2000px;">
-                    <a class="navbar-brand mb-0 h1" href="#">Bombeiros</a>
+                    <a class="navbar-brand mb-0 h1" href="#">S.A. Bombeiros</a>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Página Inicial</a>
-                        </li>
+                            <a class="nav-link" href="pagina_inicial.php">Página Inicial</a>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link" href="login.php">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -54,16 +48,10 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Página Inicial</a>
+                                <a class="nav-link" href="pagina_inicial.php">Página Inicial</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contato</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="login.php">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -79,7 +67,7 @@
     </button>
     <button class="paginain">
         <div class="registrar_ocorrencia">
-            <img src="../IMAGENS/registrar ocorrencia.PNG" alt="">
+            <a href="../php/registrar_oco.php"><img src="../IMAGENS/registrar ocorrencia.PNG" alt=""></a>
         </div>
     </button>
     <button class="paginain">
@@ -89,6 +77,12 @@
     </button>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<footer class="text-center text-lg-start">
+            <div class="text-center p-3">
+                &copy; 2023 Bombeiros/Projeto Noar. Todos os direitos reservados.
+            </div>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 </html>
