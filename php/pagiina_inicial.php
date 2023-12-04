@@ -1,18 +1,30 @@
+<?php
+// Lógica fictícia de autenticação. Substitua por sua lógica real.
+$usuarioLogado = true; // Suponha que o usuário está logado.
+
+// Verificar se o usuário logado é um administrador.
+$isAdmin = false; // Substitua por sua lógica real para verificar se o usuário é um administrador.
+
+if ($usuarioLogado && $isAdmin) {
+    $mostrarBotaoRegistrarOcorrencia = true;
+} else {
+    $mostrarBotaoRegistrarOcorrencia = false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Login</title>
+    <title>Página de registro</title>
     <link rel="stylesheet" href="../CSS/style.cssSA.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-</head>
 
+
+</head>
 <body>
-   
     <div class="container-fluid m-0 p-0">
         <header>
             <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block p-0">
@@ -61,29 +73,38 @@
             </div>
         </header>
     </div>
-    <form action="../php/login_proc.php" method="post">
-    <div class="tudo1">
-        <div class="tudo">
-            <div class="registrar">
-                <p><b>Login </b></p>
-            </div>
-            <div class="camp_nome">
-                <input type="text" class="input_text" placeholder="E-mail" name="email" id="email">
-            </div>
-            <div class="camp_nome">
-                <input type="password" class="input_text" placeholder="Senha" name="senha" id="senha">
-            </div>
-            <div class="botao_registrar">
-                <input class="btn_registrar" type="submit" value="Entrar" name="Registrar">
-            </div>
+    <div class="paipagini">
+        <button class="paginain">
+        <div class="logo_medicina">
+            <img src="../IMAGENS/logo_medicina.png" alt="">
         </div>
+    </button>
+    <button class="paginain">
+        <div class="registrar_ocorrencia">
+            <a href="../php/registrar_oco.php"><img src="../IMAGENS/registrar ocorrencia.PNG" alt=""></a>
+        </div>
+    </button>
+
+    <button class="paginain">
+        <div class="registrar_ocorrencia">
+            <a href="Registro.php"><img src="../IMAGENS/usuario.png" alt="" style="    width: 175px;
+    height: 190px;"></a>
+        </div>
+    </button>
+
+    <button class="paginain">
+        <div class="historico_ocorrencia">
+            <img src="../IMAGENS/historico.ocorrencia.PNG" alt="">
+        </div>
+    </button>
     </div>
-    </div>
-    </form> 
-    <footer class="text-center text-lg-start">
+</div>
+<footer class="text-center text-lg-start">
             <div class="text-center p-3">
                 &copy; 2023 Bombeiros/Projeto Noar. Todos os direitos reservados.
             </div>
         </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 </html>

@@ -1,55 +1,61 @@
 <?php
+include("dbdb.php");
+
 // Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Inclua o arquivo de configuração do banco de dados
-    include_once "dbdb.php"; // Substitua "config.php" pelo nome do seu arquivo de configuração
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['senha'])) {
 
-    // Obtém os dados do formulário
-    $name = $_POST["name"];
+    // Dados do formulário
     $email = $_POST["email"];
-    $password = $_POST["password"];
-    $cpf = $_POST["cpf"];
+    $senha = $_POST["senha"];
 
-    // Verifica se o e-mail já está cadastrado
-    $email_check_query = "SELECT * FROM usuario WHERE email_usuario='$email' LIMIT 1";
-    $result_email = $conn->query($email_check_query);
-    $user_email = $result_email->fetch_assoc();
+    // Consulta para verificar se o usuário existe
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email_usuario = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Verifica se o CPF já está cadastrado
-    $cpf_check_query = "SELECT * FROM usuario WHERE CPF_usuario='$cpf' LIMIT 1";
-    $result_cpf = $conn->query($cpf_check_query);
-    $user_cpf = $result_cpf->fetch_assoc();
+    if ($result->num_rows == 1) {
+        $usuario_db = $result->fetch_assoc();
 
-    if ($user_email) {
-        // E-mail já cadastrado, redireciona para a página de registro com mensagem de erro
-        header("Location: registro.php?error=email_duplicado");
-        exit();
-    }
+        // Verifica se a senha fornecida corresponde a senha armazenada
+        if ($senha == $usuario_db['senha_usuario']) {
+            $_SESSION['id_usuario'] = $usuario_db['id_usuario'];
+            $_SESSION['nome_usuario'] = $usuario_db['nome_usuario'];
+            $_SESSION['loggedIn'] = true;
 
-    if ($user_cpf) {
-        // CPF já cadastrado, redireciona para a página de registro com mensagem de erro
-        header("Location: registro.php?error=cpf_duplicado");
-        exit();
-    }
+            // Verifica se o usuário é um administrador
+            if ($usuario_db['tipo_usuario'] === 'admin') {
+                $_SESSION['admin'] = true;
+            }
 
-    // Insere os dados no banco de dados
-    $sql = "INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, CPF_usuario) VALUES ('$name', '$email', '$password', '$cpf')";
+            // Fecha a conexão com o banco de dados
+            $stmt->close();
+            $conn->close();
 
-    if ($conn->query($sql) === TRUE) {
-        // Registro bem-sucedido, você pode redirecionar para uma página de sucesso se necessário
-        header("Location: pagina_inicial.php");
-        exit();
+            // Redireciona para a página adm ou user
+            if ($_SESSION['admin']) {
+                header('Location: pagiina_inicial.php');
+            } else {
+                header('Location: index.php');
+            }
+            exit();
+        } else {
+            $_SESSION['erro_autenticacao'] = "Senha incorreta.";
+        }
     } else {
-        // Erro ao registrar, redireciona para a página de registro com mensagem de erro
-        header("Location: registro.php?error=erro_registro");
-        exit();
+        $_SESSION['erro_autenticacao'] = "Usuário não encontrado.";
     }
 
     // Fecha a conexão com o banco de dados
+    $stmt->close();
     $conn->close();
+
+    header('Location: login.php?msg=autenticacao-erro');
+    exit();
 } else {
-    // Se o formulário não foi enviado, redirecione para a página de registro
-    header("Location: registro.php");
+    // Formulário não enviado, redireciona para a página de login
+    $_SESSION['erro_autenticacao'] = "Campos de formulário não definidos.";
+    header('Location: login.php?msg=autenticacao-erro');
     exit();
 }
 ?>

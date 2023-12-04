@@ -1,16 +1,10 @@
 <?php
-// Reseta a sessão anterior caso exista
-session_start();
-session_unset();
-session_destroy();
-// Inicia  sessão
 session_start();
 
 include("dbdb.php");
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['senha'])) {
-
     // Dados do formulário
     $email = $_POST["email"];
     $senha = $_POST["senha"];
@@ -20,13 +14,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    
 
     if ($result->num_rows == 1) {
         $usuario_db = $result->fetch_assoc();
 
-        // Verifica se a senha fornecida corresponde a senha armazenada
-        if ($senha == $usuario_db['senha_usuario']) {
+        // Verifica se a senha fornecida corresponde à senha armazenada
+        if (password_verify($senha, $usuario_db['senha_usuario'])) {
+            // Gera um token de sessão seguro
+            $token = bin2hex(random_bytes(32));
+
+            // Armazena o token na sessão
+            $_SESSION['token'] = $token;
+
+            // Armazena outras informações do usuário na sessão
             $_SESSION['id_usuario'] = $usuario_db['id_usuario'];
             $_SESSION['nome_usuario'] = $usuario_db['nome_usuario'];
             $_SESSION['loggedIn'] = true;
@@ -36,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
                 $_SESSION['admin'] = true;
             }
 
-            
             // Fecha a conexão com o banco de dados
             $stmt->close();
             $conn->close();
@@ -54,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     } else {
         $_SESSION['erro_autenticacao'] = "Usuário não encontrado.";
     }
-
-    
 
     // Fecha a conexão com o banco de dados
     $stmt->close();

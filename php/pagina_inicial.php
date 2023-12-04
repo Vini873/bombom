@@ -1,3 +1,17 @@
+<?php
+// Lógica fictícia de autenticação. Substitua por sua lógica real.
+$usuarioLogado = true; // Suponha que o usuário está logado.
+
+// Verificar se o usuário logado é um administrador.
+$isAdmin = false; // Substitua por sua lógica real para verificar se o usuário é um administrador.
+
+if ($usuarioLogado && $isAdmin) {
+    $mostrarBotaoRegistrarOcorrencia = true;
+} else {
+    $mostrarBotaoRegistrarOcorrencia = false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +84,13 @@
             <a href="../php/registrar_oco.php"><img src="../IMAGENS/registrar ocorrencia.PNG" alt=""></a>
         </div>
     </button>
+
+    <div class="registrar_ocorrencia">
+        <?php if ($mostrarBotaoRegistrarOcorrencia): ?>
+            <a href="../php/registrar_oco.php"><img src="../IMAGENS/registrar ocorrencia.PNG" alt=""></a>
+        <?php endif; ?>
+    </div>
+
     <button class="paginain">
         <div class="historico_ocorrencia">
             <img src="../IMAGENS/historico.ocorrencia.PNG" alt="">

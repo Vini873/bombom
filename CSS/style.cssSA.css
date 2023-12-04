@@ -9,6 +9,7 @@ html {
 }
 .container{
   background-color: #F00;
+  margin-right: -10px;
 }
 .bloco {
     border: 5px solid #ccc;
