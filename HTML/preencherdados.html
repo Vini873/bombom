@@ -75,6 +75,7 @@
             </div>
         </header>
     </div>
+    <form method="post" action="../php/salvar_ocorrencia.php">
     <div class="tipodeoc">
         <div class="accordion" id="accordionExample">
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -1360,7 +1361,7 @@
                                 </div>
 
 
-                                <div><input type="checkbox">
+                                <div><input type="checkbox" name="NumeroUsb">
                                     <label for="">USB(PEQUENO)</label>
                                 </div>
 
@@ -2540,35 +2541,15 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseNineteen" aria-expanded="false"
-                                    aria-controls="collapseNineteen">
-                                    RESPONSÁVEL PELO PREENCHIMENTO
-                                </button>
-                            </h2>
-                            <div id="collapseNineteen" class="accordion-collapse collapse"
-                                aria-labelledby="headingNineteen" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput" class="form-label">NOME DO RESPONSÁVEL
-                                            PELO PREENCHIMENTO:</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput"
-                                            placeholder="NOME COMPLETO">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
 
 
                 </div>
+                <div class="botao" style="display: flex; align-itens: center; justify-content: center;">
+                    <input class="btn btn-primary" type="submit" value="Enviar" style="width: 50%; background-color: red">
+                </div>
+</form>
 
 
 

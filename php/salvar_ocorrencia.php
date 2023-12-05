@@ -442,7 +442,7 @@ if (mysqli_query($conn, $sql_detalhes_viagem)) {
     $ingeriu_horas = isset($_POST['IngeriuAlimentoHoras']) ? $_POST['IngeriuAlimentoHoras'] : null;
 
     // Insere os dados na tabela ficha_anamnese_emergência_médica
-    $sql_anm_medica = "INSERT INTO ficha_anamnese_emergência_médica (que_aconteceu, vezes_aconteceu, tempo_aconteceu, problema_saude, qual_problema, uso_medicacao, 
+    $sql_anm_medica = "INSERT INTO ficha_anamnese_emergencia_medica (que_aconteceu, vezes_aconteceu, tempo_aconteceu, problema_saude, qual_problema, uso_medicacao, 
     horario_medicacao, qual_medicacao, alergico, qual_alergia, ingeriu_alimentos,ingeriu_horas) 
     VALUES('$que_aconteceu','$vezes_aconteceu','$tempo_aconteceu','$problema_saude','$qual_problema','$uso_medicacao','$horario_medicacao','$qual_medicacao','$alergico',
     '$qual_alergia','$ingeriu_alimentos', '$ingeriu_horas')";
@@ -509,7 +509,7 @@ foreach ($procedimentos as $procedimento) {
     $conn->close();
 } else {
     // Se o formulário não foi enviado redireciona para a página inicial
-    header("Location: index.php");
+    header("Location: pagina_incial.php");
     exit();
 }
 ?>
