@@ -28,7 +28,7 @@
             <p><b>REGISTRAR-SE</b></p>
         </div>
 
-        <form action="../php/registro_proc.php" method="post" style="
+        <form action="registro_proc.php" method="post" style="
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -36,7 +36,7 @@
     align-items: center;">
 
         <div class="camp_nome">
-            <input type="name" class="input_text" placeholder="Nome completo" name="name" 
+            <input type="name" class="input_text" placeholder="Nome completo" name="nome" 
                             id="name">
         </div>
         <div class="camp_nome">
@@ -44,12 +44,12 @@
                             id="email">
         </div>
         <div class="camp_nome">
-            <input type="password" class="input_text" placeholder="Digite sua senha" name="password" 
+            <input type="password" class="input_text" placeholder="Digite sua senha" name="senha" 
                             id="senha">
         </div>
         <div class="camp_nome">
             <input type="text" class="input_text" placeholder="Digite seu cpf" name="cpf" 
-                            id="senha">
+                            id="cpf">
         </div>
         <div class="botao_registrar" style="margin-right: 20px">
             <input class="btn_registrar" type="submit" value="Registrar" name="Registrar"> 

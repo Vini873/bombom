@@ -1,61 +1,65 @@
 <?php
-include("dbdb.php");
+include('dbdb.php');
+session_start();
 
-// Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['senha'])) {
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $cpf = $_POST['cpf'];
 
-    // Dados do formulário
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-
-    // Consulta para verificar se o usuário existe
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email_usuario = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows == 1) {
-        $usuario_db = $result->fetch_assoc();
-
-        // Verifica se a senha fornecida corresponde a senha armazenada
-        if ($senha == $usuario_db['senha_usuario']) {
-            $_SESSION['id_usuario'] = $usuario_db['id_usuario'];
-            $_SESSION['nome_usuario'] = $usuario_db['nome_usuario'];
-            $_SESSION['loggedIn'] = true;
-
-            // Verifica se o usuário é um administrador
-            if ($usuario_db['tipo_usuario'] === 'admin') {
-                $_SESSION['admin'] = true;
-            }
-
-            // Fecha a conexão com o banco de dados
-            $stmt->close();
-            $conn->close();
-
-            // Redireciona para a página adm ou user
-            if ($_SESSION['admin']) {
-                header('Location: pagiina_inicial.php');
-            } else {
-                header('Location: index.php');
-            }
-            exit();
-        } else {
-            $_SESSION['erro_autenticacao'] = "Senha incorreta.";
-        }
-    } else {
-        $_SESSION['erro_autenticacao'] = "Usuário não encontrado.";
+    // Verificar se o CPF tem 11 dígitos
+    if (strlen($cpf) !== 11) {
+    $_SESSION['cadastro_erro_cpf'] = 'O CPF digitado é inválido.';
+    header("Location: Registro.php");
+    exit();
     }
 
-    // Fecha a conexão com o banco de dados
-    $stmt->close();
-    $conn->close();
+    // Verificar se o e-mail já está cadastrado
+    $verificar_email = "SELECT * FROM usuario WHERE email_usuario = ?";
+    $stmt_verificar_email = $conn->prepare($verificar_email);
+    $stmt_verificar_email->bind_param('s', $email);
+    $stmt_verificar_email->execute();
+    $result_verificar_email = $stmt_verificar_email->get_result();
 
-    header('Location: login.php?msg=autenticacao-erro');
-    exit();
-} else {
-    // Formulário não enviado, redireciona para a página de login
-    $_SESSION['erro_autenticacao'] = "Campos de formulário não definidos.";
-    header('Location: login.php?msg=autenticacao-erro');
-    exit();
+    if ($result_verificar_email->num_rows > 0) {
+        $_SESSION['cadastro_erro_email'] = 'Este e-mail já está cadastrado.';
+        header("Location: Registro.php");
+        exit();
+    }
+
+    // Verificar se o CPF já está cadastrado
+    $verificar_cpf = "SELECT * FROM usuario WHERE CPF_usuario = ?";
+    $stmt_verificar_cpf = $conn->prepare($verificar_cpf);
+    $stmt_verificar_cpf->bind_param('s', $cpf);
+    $stmt_verificar_cpf->execute();
+    $result_verificar_cpf = $stmt_verificar_cpf->get_result();
+
+    if ($result_verificar_cpf->num_rows > 0) {
+        $_SESSION['cadastro_erro_cpf'] = 'Este CPF já está cadastrado.';
+        header("Location: Registro.php");
+        exit();
+    }
+
+    // Inserção no banco de dados
+    $sql = "INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, CPF_usuario) VALUES (?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+
+    // Vincular os valores das variáveis à consulta preparada
+    $stmt->bind_param('ssss', $nome, $email, $senha, $cpf);
+
+    if ($stmt->execute()) {
+        // O INSERT foi bem-sucedido
+        $_SESSION['cadastro_sucesso'] = 'Usuário cadastrado com sucesso!';
+        header("Location: pagina_inicial.php");
+        exit();
+    } else {
+        $_SESSION['cadastro_erro'] = 'Erro ao inserir usuário no banco de dados: ' . $stmt->error;
+        header("Location: Registro.php");
+        exit();
+    }
 }
+
+$conn->close();
 ?>
