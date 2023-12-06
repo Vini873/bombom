@@ -25,13 +25,13 @@ CREATE TABLE `fichas` (
   `id_fichas` int(11) NOT NULL,
   `data_ficha` date NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
-  `idFicha_Paciente` int(11) DEFAULT NULL,
-  `idFicha_Avaliacao_Glasgow` int(11) DEFAULT NULL,
-  `idFicha_Sinais_Vitais` int(11) DEFAULT NULL,
+  `idPaciente` int(11) DEFAULT NULL,
+  `idAvaliacao_Glasgow` int(11) DEFAULT NULL,
+  `idSinais_Vitais` int(11) DEFAULT NULL,
   `idProblemas_Encontrados` int(11) DEFAULT NULL,
-  `idFicha_Localizacao_dos_Traumas` int(11) DEFAULT NULL,
+  `idLocalizacao_dos_Traumas` int(11) DEFAULT NULL,
   `idSinais_e_Sintomas` int(11) DEFAULT NULL,
-  `idFicha_Transporte` int(11) DEFAULT NULL,
+  `idTransporte` int(11) DEFAULT NULL,
   `idProcedimentos_Efetuados` int(11) DEFAULT NULL,
   `idMateriais_Utilizados_Descartavel` int(11) DEFAULT NULL,
   `idMateriais_Utilizados_Deixados` int(11) DEFAULT NULL
@@ -40,10 +40,10 @@ CREATE TABLE `fichas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_anamnese_emergência_médica`
+-- Table structure for table `anamnese_emergência_médica`
 --
 
-CREATE TABLE `ficha_anamnese_emergência_médica` (
+CREATE TABLE `anamnese_emergência_médica` (
   `idAnamnese_Emergência_Médica` int(11) NOT NULL,
   `que_aconteceu` text NOT NULL,
   `vezes_aconteceu` varchar(3) NOT NULL,
@@ -60,19 +60,19 @@ CREATE TABLE `ficha_anamnese_emergência_médica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `ficha_anamnese_emergência_médica`
+-- Dumping data for table `anamnese_emergência_médica`
 --
 
-INSERT INTO `ficha_anamnese_emergência_médica` (`idAnamnese_Emergência_Médica`, `que_aconteceu`, `vezes_aconteceu`, `tempo_aconteceu`, `problema_saude`, `qual_problema`, `uso_medicacao`, `horario_medicacao`, `qual_medicacao`, `alergico`, `qual_alergia`, `ingeriu_alimentos`, `ingeriu_horas`) VALUES
+INSERT INTO `anamnese_emergência_médica` (`idAnamnese_Emergência_Médica`, `que_aconteceu`, `vezes_aconteceu`, `tempo_aconteceu`, `problema_saude`, `qual_problema`, `uso_medicacao`, `horario_medicacao`, `qual_medicacao`, `alergico`, `qual_alergia`, `ingeriu_alimentos`, `ingeriu_horas`) VALUES
 (4, '', '', '', '', '', '', '00:00:00', '', '', '', '', '00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_anamnese_gestacional`
+-- Table structure for table `anamnese_gestacional`
 --
 
-CREATE TABLE `ficha_anamnese_gestacional` (
+CREATE TABLE `anamnese_gestacional` (
   `idAnamnese_Gestacional` int(11) NOT NULL,
   `tempoGestacao` varchar(255) DEFAULT NULL,
   `fezPreNatal` varchar(3) DEFAULT NULL,
@@ -95,10 +95,10 @@ CREATE TABLE `ficha_anamnese_gestacional` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_avaliacao_cinematica`
+-- Table structure for table `avaliacao_cinematica`
 --
 
-CREATE TABLE `ficha_avaliacao_cinematica` (
+CREATE TABLE `avaliacao_cinematica` (
   `idAvaliacao_Cinematica` int(11) NOT NULL,
   `disturbio_comportamento` varchar(3) DEFAULT NULL,
   `encontra_capacete` varchar(3) DEFAULT NULL,
@@ -112,11 +112,11 @@ CREATE TABLE `ficha_avaliacao_cinematica` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_avaliacao_glasgow`
+-- Table structure for table `avaliacao_glasgow`
 --
 
-CREATE TABLE `ficha_avaliacao_glasgow` (
-  `idFicha_Avaliacao_Glasgow` int(11) NOT NULL,
+CREATE TABLE `avaliacao_glasgow` (
+  `idAvaliacao_Glasgow` int(11) NOT NULL,
   `Abertura_Ocular` varchar(99) DEFAULT NULL,
   `Resposta_Verbal` varchar(99) DEFAULT NULL,
   `Resposta_Motora` varchar(99) DEFAULT NULL
@@ -125,20 +125,20 @@ CREATE TABLE `ficha_avaliacao_glasgow` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_localizacao_dos_traumas`
+-- Table structure for table `localizacao_dos_traumas`
 --
 
-CREATE TABLE `ficha_localizacao_dos_traumas` (
-  `idFicha_Localizacao_dos_Traumas` int(11) NOT NULL
+CREATE TABLE `localizacao_dos_traumas` (
+  `idLocalizacao_dos_Traumas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_materiais_utilizados_deixados`
+-- Table structure for table `materiais_utilizados_deixados`
 --
 
-CREATE TABLE `ficha_materiais_utilizados_deixados` (
+CREATE TABLE `materiais_utilizados_deixados` (
   `idMateriais_Utilizados_Deixados` int(11) NOT NULL,
   `base` varchar(10) NOT NULL,
   `colar1` varchar(10) NOT NULL,
@@ -159,10 +159,10 @@ CREATE TABLE `ficha_materiais_utilizados_deixados` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_materiais_utilizados_descartavel`
+-- Table structure for table `materiais_utilizados_descartavel`
 --
 
-CREATE TABLE `ficha_materiais_utilizados_descartavel` (
+CREATE TABLE `materiais_utilizados_descartavel` (
   `idMateriais_Utilizados_Descartavel` int(11) NOT NULL,
   `ataduras` varchar(10) NOT NULL,
   `cateter` varchar(10) NOT NULL,
@@ -182,10 +182,10 @@ CREATE TABLE `ficha_materiais_utilizados_descartavel` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_objetos_recolhidos`
+-- Table structure for table `objetos_recolhidos`
 --
 
-CREATE TABLE `ficha_objetos_recolhidos` (
+CREATE TABLE `objetos_recolhidos` (
   `idObjetos_Recolhidos` int(11) NOT NULL,
   `objetos_recolhidos` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -193,10 +193,10 @@ CREATE TABLE `ficha_objetos_recolhidos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_observacoes_importantes`
+-- Table structure for table `observacoes_importantes`
 --
 
-CREATE TABLE `ficha_observacoes_importantes` (
+CREATE TABLE `observacoes_importantes` (
   `idObservacoes_Importantes` int(11) NOT NULL,
   `observacoes_importantes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -204,11 +204,11 @@ CREATE TABLE `ficha_observacoes_importantes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_paciente`
+-- Table structure for table `paciente`
 --
 
-CREATE TABLE `ficha_paciente` (
-  `idFicha_Paciente` int(11) NOT NULL,
+CREATE TABLE `paciente` (
+  `idPaciente` int(11) NOT NULL,
   `data_ocorrencia` date NOT NULL,
   `genero_paciente` varchar(9) NOT NULL,
   `nome_hospital` varchar(255) NOT NULL,
@@ -224,10 +224,10 @@ CREATE TABLE `ficha_paciente` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_problemas_encontrados`
+-- Table structure for table `problemas_encontrados`
 --
 
-CREATE TABLE `ficha_problemas_encontrados` (
+CREATE TABLE `problemas_encontrados` (
   `idProblemas_Encontrados` int(11) NOT NULL,
   `psiquiatrico` int(11) NOT NULL,
   `obstetrico` varchar(99) NOT NULL,
@@ -240,10 +240,10 @@ CREATE TABLE `ficha_problemas_encontrados` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_procedimentos_efetuados`
+-- Table structure for table `procedimentos_efetuados`
 --
 
-CREATE TABLE `ficha_procedimentos_efetuados` (
+CREATE TABLE `procedimentos_efetuados` (
   `idProcedimentos_Efetuados` int(11) NOT NULL,
   `Aspiracao` int(11) DEFAULT NULL,
   `Avalicao_Inicial` int(11) DEFAULT NULL,
@@ -303,10 +303,10 @@ CREATE TABLE `ficha_procedimentos_efetuados` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_sinais_e_sintomas`
+-- Table structure for table `sinais_e_sintomas`
 --
 
-CREATE TABLE `ficha_sinais_e_sintomas` (
+CREATE TABLE `sinais_e_sintomas` (
   `idSinais_e_Sintomas` int(11) NOT NULL,
   `abdomen_sensivel_rigido` int(11) DEFAULT NULL,
   `afundamento_cranio` int(11) DEFAULT NULL,
@@ -366,11 +366,11 @@ CREATE TABLE `ficha_sinais_e_sintomas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_sinais_vitais`
+-- Table structure for table `sinais_vitais`
 --
 
-CREATE TABLE `ficha_sinais_vitais` (
-  `idFicha_Sinais_Vitais` int(11) NOT NULL,
+CREATE TABLE `sinais_vitais` (
+  `idSinais_Vitais` int(11) NOT NULL,
   `pressao_arterial0` varchar(45) DEFAULT NULL,
   `pressao_arterial1` varchar(45) NOT NULL,
   `pulso` varchar(45) NOT NULL,
@@ -384,10 +384,10 @@ CREATE TABLE `ficha_sinais_vitais` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_tipo_de_ocorrencia`
+-- Table structure for table `tipo_de_ocorrencia`
 --
 
-CREATE TABLE `ficha_tipo_de_ocorrencia` (
+CREATE TABLE `tipo_de_ocorrencia` (
   `idTipo_de_Ocorrencia` int(11) NOT NULL,
   `Causado_Por_Animais` int(11) DEFAULT NULL,
   `Com_Meio_De_Transporte` int(11) DEFAULT NULL,
@@ -415,11 +415,11 @@ CREATE TABLE `ficha_tipo_de_ocorrencia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_transporte_decisao_transporte`
+-- Table structure for table `transporte_decisao_transporte`
 --
 
-CREATE TABLE `ficha_transporte_decisao_transporte` (
-  `idFicha_Decisao_Transporte` int(11) NOT NULL,
+CREATE TABLE `transporte_decisao_transporte` (
+  `idDecisao_Transporte` int(11) NOT NULL,
   `decisao_transporte` varchar(33) NOT NULL,
   `M` varchar(99) NOT NULL,
   `S1` varchar(99) NOT NULL,
@@ -432,10 +432,10 @@ CREATE TABLE `ficha_transporte_decisao_transporte` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_transporte_detalhes_viagem`
+-- Table structure for table `transporte_detalhes_viagem`
 --
 
-CREATE TABLE `ficha_transporte_detalhes_viagem` (
+CREATE TABLE `transporte_detalhes_viagem` (
   `idDetalhes_Viagem` int(11) NOT NULL,
   `NumeroUSB` varchar(255) DEFAULT NULL,
   `CodigoIR` varchar(255) DEFAULT NULL,
@@ -450,22 +450,22 @@ CREATE TABLE `ficha_transporte_detalhes_viagem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_transporte_forma_de_conducao`
+-- Table structure for table `transporte_forma_de_conducao`
 --
 
-CREATE TABLE `ficha_transporte_forma_de_conducao` (
-  `idFicha_Forma_de_Conducao` int(11) NOT NULL,
+CREATE TABLE `transporte_forma_de_conducao` (
+  `idForma_de_Conducao` int(11) NOT NULL,
   `forma_conducao` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ficha_transporte_vitima_era`
+-- Table structure for table `transporte_vitima_era`
 --
 
-CREATE TABLE `ficha_transporte_vitima_era` (
-  `idFicha_Transporte_Vitima_Era` int(11) NOT NULL,
+CREATE TABLE `transporte_vitima_era` (
+  `idTransporte_Vitima_Era` int(11) NOT NULL,
   `vitima_era` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -503,144 +503,144 @@ INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `email_usuario`, `CPF_usuar
 ALTER TABLE `fichas`
   ADD PRIMARY KEY (`id_fichas`),
   ADD UNIQUE KEY `idReports_UNIQUE` (`id_fichas`),
-  ADD KEY `idFicha_Paciente_idx` (`idFicha_Paciente`),
-  ADD KEY `idFicha_Sinais_Vitais_idx` (`idFicha_Sinais_Vitais`),
+  ADD KEY `idPaciente_idx` (`idPaciente`),
+  ADD KEY `idSinais_Vitais_idx` (`idSinais_Vitais`),
   ADD KEY `idProblemas_Encontrados_idx` (`idProblemas_Encontrados`),
-  ADD KEY `idFicha_Localizacao_dos_Traumas_idx` (`idFicha_Localizacao_dos_Traumas`),
+  ADD KEY `idLocalizacao_dos_Traumas_idx` (`idLocalizacao_dos_Traumas`),
   ADD KEY `idSinais_e_Sintomas_idx` (`idSinais_e_Sintomas`),
-  ADD KEY `idFicha_Avaliacao_Glasgow_idx` (`idFicha_Avaliacao_Glasgow`),
+  ADD KEY `idAvaliacao_Glasgow_idx` (`idAvaliacao_Glasgow`),
   ADD KEY `idProcedimentos_Efetuados_idx` (`idProcedimentos_Efetuados`),
   ADD KEY `idMateriais_Utilizados_Descartavel_idx` (`idMateriais_Utilizados_Descartavel`),
   ADD KEY `idMateriais_Utilizados_Deixados_idx` (`idMateriais_Utilizados_Deixados`),
   ADD KEY `id_usuario_idx` (`id_usuario`);
 
 --
--- Indexes for table `ficha_anamnese_emergência_médica`
+-- Indexes for table `anamnese_emergência_médica`
 --
-ALTER TABLE `ficha_anamnese_emergência_médica`
+ALTER TABLE `anamnese_emergência_médica`
   ADD PRIMARY KEY (`idAnamnese_Emergência_Médica`),
   ADD UNIQUE KEY `idAnamnese_Emergência_Médica_UNIQUE` (`idAnamnese_Emergência_Médica`);
 
 --
--- Indexes for table `ficha_anamnese_gestacional`
+-- Indexes for table `anamnese_gestacional`
 --
-ALTER TABLE `ficha_anamnese_gestacional`
+ALTER TABLE `anamnese_gestacional`
   ADD PRIMARY KEY (`idAnamnese_Gestacional`);
 
 --
--- Indexes for table `ficha_avaliacao_cinematica`
+-- Indexes for table `avaliacao_cinematica`
 --
-ALTER TABLE `ficha_avaliacao_cinematica`
+ALTER TABLE `avaliacao_cinematica`
   ADD PRIMARY KEY (`idAvaliacao_Cinematica`);
 
 --
--- Indexes for table `ficha_avaliacao_glasgow`
+-- Indexes for table `avaliacao_glasgow`
 --
-ALTER TABLE `ficha_avaliacao_glasgow`
-  ADD PRIMARY KEY (`idFicha_Avaliacao_Glasgow`),
-  ADD UNIQUE KEY `idFicha_Avaliacao_Glasgow_UNIQUE` (`idFicha_Avaliacao_Glasgow`);
+ALTER TABLE `avaliacao_glasgow`
+  ADD PRIMARY KEY (`idAvaliacao_Glasgow`),
+  ADD UNIQUE KEY `idAvaliacao_Glasgow_UNIQUE` (`idAvaliacao_Glasgow`);
 
 --
--- Indexes for table `ficha_localizacao_dos_traumas`
+-- Indexes for table `localizacao_dos_traumas`
 --
-ALTER TABLE `ficha_localizacao_dos_traumas`
-  ADD PRIMARY KEY (`idFicha_Localizacao_dos_Traumas`);
+ALTER TABLE `localizacao_dos_traumas`
+  ADD PRIMARY KEY (`idLocalizacao_dos_Traumas`);
 
 --
--- Indexes for table `ficha_materiais_utilizados_deixados`
+-- Indexes for table `materiais_utilizados_deixados`
 --
-ALTER TABLE `ficha_materiais_utilizados_deixados`
+ALTER TABLE `materiais_utilizados_deixados`
   ADD PRIMARY KEY (`idMateriais_Utilizados_Deixados`),
   ADD UNIQUE KEY `idMateriais_Utilizados_Deixados_UNIQUE` (`idMateriais_Utilizados_Deixados`);
 
 --
--- Indexes for table `ficha_materiais_utilizados_descartavel`
+-- Indexes for table `materiais_utilizados_descartavel`
 --
-ALTER TABLE `ficha_materiais_utilizados_descartavel`
+ALTER TABLE `materiais_utilizados_descartavel`
   ADD PRIMARY KEY (`idMateriais_Utilizados_Descartavel`),
   ADD UNIQUE KEY `idMateriais_Utilizados_Descartavel_UNIQUE` (`idMateriais_Utilizados_Descartavel`);
 
 --
--- Indexes for table `ficha_objetos_recolhidos`
+-- Indexes for table `objetos_recolhidos`
 --
-ALTER TABLE `ficha_objetos_recolhidos`
+ALTER TABLE `objetos_recolhidos`
   ADD PRIMARY KEY (`idObjetos_Recolhidos`);
 
 --
--- Indexes for table `ficha_observacoes_importantes`
+-- Indexes for table `observacoes_importantes`
 --
-ALTER TABLE `ficha_observacoes_importantes`
+ALTER TABLE `observacoes_importantes`
   ADD PRIMARY KEY (`idObservacoes_Importantes`),
   ADD UNIQUE KEY `idObservacoes_Importantes_UNIQUE` (`idObservacoes_Importantes`);
 
 --
--- Indexes for table `ficha_paciente`
+-- Indexes for table `paciente`
 --
-ALTER TABLE `ficha_paciente`
-  ADD PRIMARY KEY (`idFicha_Paciente`),
-  ADD UNIQUE KEY `idReports_Patient_UNIQUE` (`idFicha_Paciente`);
+ALTER TABLE `paciente`
+  ADD PRIMARY KEY (`idPaciente`),
+  ADD UNIQUE KEY `idReports_Patient_UNIQUE` (`idPaciente`);
 
 --
--- Indexes for table `ficha_problemas_encontrados`
+-- Indexes for table `problemas_encontrados`
 --
-ALTER TABLE `ficha_problemas_encontrados`
+ALTER TABLE `problemas_encontrados`
   ADD PRIMARY KEY (`idProblemas_Encontrados`),
   ADD UNIQUE KEY `idProblemas_Encontrados_UNIQUE` (`idProblemas_Encontrados`);
 
 --
--- Indexes for table `ficha_procedimentos_efetuados`
+-- Indexes for table `procedimentos_efetuados`
 --
-ALTER TABLE `ficha_procedimentos_efetuados`
+ALTER TABLE `procedimentos_efetuados`
   ADD PRIMARY KEY (`idProcedimentos_Efetuados`),
   ADD UNIQUE KEY `idProcedimentos_Efetuados_UNIQUE` (`idProcedimentos_Efetuados`);
 
 --
--- Indexes for table `ficha_sinais_e_sintomas`
+-- Indexes for table `sinais_e_sintomas`
 --
-ALTER TABLE `ficha_sinais_e_sintomas`
+ALTER TABLE `sinais_e_sintomas`
   ADD PRIMARY KEY (`idSinais_e_Sintomas`),
   ADD UNIQUE KEY `idSinais_e_Sintomas_UNIQUE` (`idSinais_e_Sintomas`);
 
 --
--- Indexes for table `ficha_sinais_vitais`
+-- Indexes for table `sinais_vitais`
 --
-ALTER TABLE `ficha_sinais_vitais`
-  ADD PRIMARY KEY (`idFicha_Sinais_Vitais`),
-  ADD UNIQUE KEY `idFicha_Sinais_Vitais_UNIQUE` (`idFicha_Sinais_Vitais`);
+ALTER TABLE `sinais_vitais`
+  ADD PRIMARY KEY (`idSinais_Vitais`),
+  ADD UNIQUE KEY `idSinais_Vitais_UNIQUE` (`idSinais_Vitais`);
 
 --
--- Indexes for table `ficha_tipo_de_ocorrencia`
+-- Indexes for table `tipo_de_ocorrencia`
 --
-ALTER TABLE `ficha_tipo_de_ocorrencia`
+ALTER TABLE `tipo_de_ocorrencia`
   ADD PRIMARY KEY (`idTipo_de_Ocorrencia`),
   ADD UNIQUE KEY `idTipo_de_Ocorrencia_UNIQUE` (`idTipo_de_Ocorrencia`);
 
 --
--- Indexes for table `ficha_transporte_decisao_transporte`
+-- Indexes for table `transporte_decisao_transporte`
 --
-ALTER TABLE `ficha_transporte_decisao_transporte`
-  ADD PRIMARY KEY (`idFicha_Decisao_Transporte`),
-  ADD UNIQUE KEY `idFicha_Decisao_Transporte_UNIQUE` (`idFicha_Decisao_Transporte`);
+ALTER TABLE `transporte_decisao_transporte`
+  ADD PRIMARY KEY (`idDecisao_Transporte`),
+  ADD UNIQUE KEY `idDecisao_Transporte_UNIQUE` (`idDecisao_Transporte`);
 
 --
--- Indexes for table `ficha_transporte_detalhes_viagem`
+-- Indexes for table `transporte_detalhes_viagem`
 --
-ALTER TABLE `ficha_transporte_detalhes_viagem`
+ALTER TABLE `transporte_detalhes_viagem`
   ADD PRIMARY KEY (`idDetalhes_Viagem`);
 
 --
--- Indexes for table `ficha_transporte_forma_de_conducao`
+-- Indexes for table `transporte_forma_de_conducao`
 --
-ALTER TABLE `ficha_transporte_forma_de_conducao`
-  ADD PRIMARY KEY (`idFicha_Forma_de_Conducao`),
-  ADD UNIQUE KEY `idFicha_Forma_de_Conducao_UNIQUE` (`idFicha_Forma_de_Conducao`);
+ALTER TABLE `transporte_forma_de_conducao`
+  ADD PRIMARY KEY (`idForma_de_Conducao`),
+  ADD UNIQUE KEY `idForma_de_Conducao_UNIQUE` (`idForma_de_Conducao`);
 
 --
--- Indexes for table `ficha_transporte_vitima_era`
+-- Indexes for table `transporte_vitima_era`
 --
-ALTER TABLE `ficha_transporte_vitima_era`
-  ADD PRIMARY KEY (`idFicha_Transporte_Vitima_Era`),
-  ADD UNIQUE KEY `idFicha_Transporte_Vitima_Era_UNIQUE` (`idFicha_Transporte_Vitima_Era`);
+ALTER TABLE `transporte_vitima_era`
+  ADD PRIMARY KEY (`idTransporte_Vitima_Era`),
+  ADD UNIQUE KEY `idTransporte_Vitima_Era_UNIQUE` (`idTransporte_Vitima_Era`);
 
 --
 -- Indexes for table `usuario`
@@ -663,112 +663,112 @@ ALTER TABLE `fichas`
   MODIFY `id_fichas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ficha_anamnese_emergência_médica`
+-- AUTO_INCREMENT for table `anamnese_emergência_médica`
 --
-ALTER TABLE `ficha_anamnese_emergência_médica`
+ALTER TABLE `anamnese_emergência_médica`
   MODIFY `idAnamnese_Emergência_Médica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `ficha_anamnese_gestacional`
+-- AUTO_INCREMENT for table `anamnese_gestacional`
 --
-ALTER TABLE `ficha_anamnese_gestacional`
+ALTER TABLE `anamnese_gestacional`
   MODIFY `idAnamnese_Gestacional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `ficha_avaliacao_cinematica`
+-- AUTO_INCREMENT for table `avaliacao_cinematica`
 --
-ALTER TABLE `ficha_avaliacao_cinematica`
+ALTER TABLE `avaliacao_cinematica`
   MODIFY `idAvaliacao_Cinematica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
--- AUTO_INCREMENT for table `ficha_avaliacao_glasgow`
+-- AUTO_INCREMENT for table `avaliacao_glasgow`
 --
-ALTER TABLE `ficha_avaliacao_glasgow`
-  MODIFY `idFicha_Avaliacao_Glasgow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+ALTER TABLE `avaliacao_glasgow`
+  MODIFY `idAvaliacao_Glasgow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
--- AUTO_INCREMENT for table `ficha_materiais_utilizados_deixados`
+-- AUTO_INCREMENT for table `materiais_utilizados_deixados`
 --
-ALTER TABLE `ficha_materiais_utilizados_deixados`
+ALTER TABLE `materiais_utilizados_deixados`
   MODIFY `idMateriais_Utilizados_Deixados` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ficha_materiais_utilizados_descartavel`
+-- AUTO_INCREMENT for table `materiais_utilizados_descartavel`
 --
-ALTER TABLE `ficha_materiais_utilizados_descartavel`
+ALTER TABLE `materiais_utilizados_descartavel`
   MODIFY `idMateriais_Utilizados_Descartavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `ficha_objetos_recolhidos`
+-- AUTO_INCREMENT for table `objetos_recolhidos`
 --
-ALTER TABLE `ficha_objetos_recolhidos`
+ALTER TABLE `objetos_recolhidos`
   MODIFY `idObjetos_Recolhidos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 
 --
--- AUTO_INCREMENT for table `ficha_observacoes_importantes`
+-- AUTO_INCREMENT for table `observacoes_importantes`
 --
-ALTER TABLE `ficha_observacoes_importantes`
+ALTER TABLE `observacoes_importantes`
   MODIFY `idObservacoes_Importantes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 
 --
--- AUTO_INCREMENT for table `ficha_paciente`
+-- AUTO_INCREMENT for table `paciente`
 --
-ALTER TABLE `ficha_paciente`
-  MODIFY `idFicha_Paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
+ALTER TABLE `paciente`
+  MODIFY `idPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
 
 --
--- AUTO_INCREMENT for table `ficha_problemas_encontrados`
+-- AUTO_INCREMENT for table `problemas_encontrados`
 --
-ALTER TABLE `ficha_problemas_encontrados`
+ALTER TABLE `problemas_encontrados`
   MODIFY `idProblemas_Encontrados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `ficha_procedimentos_efetuados`
+-- AUTO_INCREMENT for table `procedimentos_efetuados`
 --
-ALTER TABLE `ficha_procedimentos_efetuados`
+ALTER TABLE `procedimentos_efetuados`
   MODIFY `idProcedimentos_Efetuados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `ficha_sinais_e_sintomas`
+-- AUTO_INCREMENT for table `sinais_e_sintomas`
 --
-ALTER TABLE `ficha_sinais_e_sintomas`
+ALTER TABLE `sinais_e_sintomas`
   MODIFY `idSinais_e_Sintomas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
--- AUTO_INCREMENT for table `ficha_sinais_vitais`
+-- AUTO_INCREMENT for table `sinais_vitais`
 --
-ALTER TABLE `ficha_sinais_vitais`
-  MODIFY `idFicha_Sinais_Vitais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+ALTER TABLE `sinais_vitais`
+  MODIFY `idSinais_Vitais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
 
 --
--- AUTO_INCREMENT for table `ficha_tipo_de_ocorrencia`
+-- AUTO_INCREMENT for table `tipo_de_ocorrencia`
 --
-ALTER TABLE `ficha_tipo_de_ocorrencia`
+ALTER TABLE `tipo_de_ocorrencia`
   MODIFY `idTipo_de_Ocorrencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=310;
 
 --
--- AUTO_INCREMENT for table `ficha_transporte_decisao_transporte`
+-- AUTO_INCREMENT for table `transporte_decisao_transporte`
 --
-ALTER TABLE `ficha_transporte_decisao_transporte`
-  MODIFY `idFicha_Decisao_Transporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+ALTER TABLE `transporte_decisao_transporte`
+  MODIFY `idDecisao_Transporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
--- AUTO_INCREMENT for table `ficha_transporte_detalhes_viagem`
+-- AUTO_INCREMENT for table `transporte_detalhes_viagem`
 --
-ALTER TABLE `ficha_transporte_detalhes_viagem`
+ALTER TABLE `transporte_detalhes_viagem`
   MODIFY `idDetalhes_Viagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `ficha_transporte_forma_de_conducao`
+-- AUTO_INCREMENT for table `transporte_forma_de_conducao`
 --
-ALTER TABLE `ficha_transporte_forma_de_conducao`
-  MODIFY `idFicha_Forma_de_Conducao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+ALTER TABLE `transporte_forma_de_conducao`
+  MODIFY `idForma_de_Conducao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
--- AUTO_INCREMENT for table `ficha_transporte_vitima_era`
+-- AUTO_INCREMENT for table `transporte_vitima_era`
 --
-ALTER TABLE `ficha_transporte_vitima_era`
-  MODIFY `idFicha_Transporte_Vitima_Era` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+ALTER TABLE `transporte_vitima_era`
+  MODIFY `idTransporte_Vitima_Era` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `usuario`
@@ -784,15 +784,15 @@ ALTER TABLE `usuario`
 -- Constraints for table `fichas`
 --
 ALTER TABLE `fichas`
-  ADD CONSTRAINT `idFicha_Avaliacao_Glasgow` FOREIGN KEY (`idFicha_Avaliacao_Glasgow`) REFERENCES `ficha_avaliacao_glasgow` (`idFicha_Avaliacao_Glasgow`),
-  ADD CONSTRAINT `idFicha_Localizacao_dos_Traumas` FOREIGN KEY (`idFicha_Localizacao_dos_Traumas`) REFERENCES `ficha_localizacao_dos_traumas` (`idFicha_Localizacao_dos_Traumas`),
-  ADD CONSTRAINT `idFicha_Paciente` FOREIGN KEY (`idFicha_Paciente`) REFERENCES `ficha_paciente` (`idFicha_Paciente`),
-  ADD CONSTRAINT `idFicha_Sinais_Vitais` FOREIGN KEY (`idFicha_Sinais_Vitais`) REFERENCES `ficha_sinais_vitais` (`idFicha_Sinais_Vitais`),
-  ADD CONSTRAINT `idMateriais_Utilizados_Deixados` FOREIGN KEY (`idMateriais_Utilizados_Deixados`) REFERENCES `ficha_materiais_utilizados_deixados` (`idMateriais_Utilizados_Deixados`),
-  ADD CONSTRAINT `idMateriais_Utilizados_Descartavel` FOREIGN KEY (`idMateriais_Utilizados_Descartavel`) REFERENCES `ficha_materiais_utilizados_descartavel` (`idMateriais_Utilizados_Descartavel`),
-  ADD CONSTRAINT `idProblemas_Encontrados` FOREIGN KEY (`idProblemas_Encontrados`) REFERENCES `ficha_problemas_encontrados` (`idProblemas_Encontrados`),
-  ADD CONSTRAINT `idProcedimentos_Efetuados` FOREIGN KEY (`idProcedimentos_Efetuados`) REFERENCES `ficha_procedimentos_efetuados` (`idProcedimentos_Efetuados`),
-  ADD CONSTRAINT `idSinais_e_Sintomas` FOREIGN KEY (`idSinais_e_Sintomas`) REFERENCES `ficha_sinais_e_sintomas` (`idSinais_e_Sintomas`),
+  ADD CONSTRAINT `idAvaliacao_Glasgow` FOREIGN KEY (`idAvaliacao_Glasgow`) REFERENCES `avaliacao_glasgow` (`idAvaliacao_Glasgow`),
+  ADD CONSTRAINT `idLocalizacao_dos_Traumas` FOREIGN KEY (`idLocalizacao_dos_Traumas`) REFERENCES `localizacao_dos_traumas` (`idLocalizacao_dos_Traumas`),
+  ADD CONSTRAINT `idPaciente` FOREIGN KEY (`idPaciente`) REFERENCES `paciente` (`idPaciente`),
+  ADD CONSTRAINT `idSinais_Vitais` FOREIGN KEY (`idSinais_Vitais`) REFERENCES `sinais_vitais` (`idSinais_Vitais`),
+  ADD CONSTRAINT `idMateriais_Utilizados_Deixados` FOREIGN KEY (`idMateriais_Utilizados_Deixados`) REFERENCES `materiais_utilizados_deixados` (`idMateriais_Utilizados_Deixados`),
+  ADD CONSTRAINT `idMateriais_Utilizados_Descartavel` FOREIGN KEY (`idMateriais_Utilizados_Descartavel`) REFERENCES `materiais_utilizados_descartavel` (`idMateriais_Utilizados_Descartavel`),
+  ADD CONSTRAINT `idProblemas_Encontrados` FOREIGN KEY (`idProblemas_Encontrados`) REFERENCES `problemas_encontrados` (`idProblemas_Encontrados`),
+  ADD CONSTRAINT `idProcedimentos_Efetuados` FOREIGN KEY (`idProcedimentos_Efetuados`) REFERENCES `procedimentos_efetuados` (`idProcedimentos_Efetuados`),
+  ADD CONSTRAINT `idSinais_e_Sintomas` FOREIGN KEY (`idSinais_e_Sintomas`) REFERENCES `sinais_e_sintomas` (`idSinais_e_Sintomas`),
   ADD CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --

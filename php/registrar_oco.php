@@ -399,7 +399,7 @@
                         <div class="row justify-content-center fs-4">Nivel de consciência</div>
                         <div2 class="row h-auto" style="font-size: 12px;">
                             <div class="col-2 w-10"
-                                style="rotate: 90deg; font-size: 16px; font-family: 'Courier New', Courier, monospace; padding-bottom: 20px; height: 50px;">
+                            style="font-size: 16px;padding-bottom: 20px;height: 50px;display: flex;justify-content: center;align-items: center;margin-top: 30px;">
                                 Abertura ocular</div>
                             <div1 class="col-5" id="maior5">Maiores de 5 anos <br>
                                 <div class="col-auto">
@@ -465,7 +465,7 @@
                         <hr>
                         <div class="row h-auto" style="font-size: 12px;">
                             <div class="col-2 w-10"
-                                style="rotate: 90deg; font-size: 16px; font-family: 'Courier New', Courier, monospace; padding-bottom: 20px; height: 50px;">
+                                style="font-size: 16px;padding-bottom: 20px;height: 50px;margin-top: 86px;">
                                 Resposta verbal</div>
                             <div1 class="col-5" id="maior7">
                                 <div class="col-auto">
@@ -545,7 +545,7 @@
                         <hr>
                         <div class="row h-auto" style="font-size: 12px;">
                             <div class="col-2 w-10"
-                                style="rotate: 90deg; font-size: 16px; font-family: 'Courier New', Courier, monospace; padding-bottom: 20px; height: 50px;">
+                            style="font-size: 16px;padding-bottom: 20px;height: 50px;margin-top: 97px;">
                                 Resposta motora</div>
                             <div1 class="col-4 p-0" id="maior6">
                                 <div class="col-auto">
@@ -697,12 +697,12 @@
                                 <input class="form-check-input" type="radio" name="perfusão" value="perfusão"
                                     id="perfusão2maior">
                                 <label class="form-check-label" for="perfusão2maior">
-                                    > 2seg
+                                    + 2seg
                                 </label>
                                 <input class="form-check-input" type="radio" name="perfusão" value="perfusão"
                                     id="perfusão2menor">
                                 <label class="form-check-label" for="perfusão2menor">
-                                    < 2 seg </label>
+                                    - 2 seg </label>
                             </div>
                             <div class="col-4" style="padding: 0; display: flex; align-items: center;"><input
                                     type="radio" name="FichaANN" class="form-check-input" id="FichaN">
@@ -1682,7 +1682,7 @@
             </div>
         </div>
                             </div>                                           
-    <div class="accordion-item">
+                            <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTwelve">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false"
@@ -1806,8 +1806,8 @@
                     </label>
                 </div>
                 <div class="row" style="position: relative;">
-                    <input class="form-check-input" type="checkbox" name="3_Pontas" id="3_Pontas">
-                    <label class="form-check-label" for="3_Pontas"
+                    <input class="form-check-input" type="checkbox" name="tres_Pontas" id="tres_Pontas">
+                    <label class="form-check-label" for="tres_Pontas"
                         style="position: absolute; top: 0;left: 32px;">
                         3 pontas
                     </label>
@@ -2073,18 +2073,6 @@
                         </div>
                     </label>
                 </div>
-     CASO NÃO FUNCIONE COM A TAG BUTTON MUDE PARA SELECT(NSEI COMO A TAG BUTTON VAI RESPONDER COM O BANCO), VOU DEIXAR UM CODIGO COMMITADO AQUI EMBAIXO PARA USAR O SELECT AO INVES DO BUTTON 
-     CASO NÃO FUNCIONE COM A TAG BUTTON MUDE PARA SELECT(NSEI COMO A TAG BUTTON VAI RESPONDER COM O BANCO), VOU DEIXAR UM CODIGO COMMITADO AQUI EMBAIXO PARA USAR O SELECT AO INVES DO BUTTON 
-     CASO NÃO FUNCIONE COM A TAG BUTTON MUDE PARA SELECT(NSEI COMO A TAG BUTTON VAI RESPONDER COM O BANCO), VOU DEIXAR UM CODIGO COMMITADO AQUI EMBAIXO PARA USAR O SELECT AO INVES DO BUTTON 
-
-     <div class="btn-group dropend" style="display: flex; align-items: center; width: 100px;padding-top: 4px; padding-bottom: 4px">
-                  <select class="btn btn-secondary dropdown-toggle" style="display: flex; align-items: center; width: 100px;" data-bs-toggle="dropdown" aria-expanded="false">
-                    Samu
-                  <option>USA</a></li>
-                  <option>USB</a></li>
-                  </select>
-                </div> 
-              
                 <div class="row" style="position: relative;">
                     <input class="form-check-input" type="checkbox" name="CIT" id="CIT">
                     <label class="form-check-label" for="CIT"
@@ -2098,173 +2086,13 @@
                 </div>
             </div>
         </div>
-                            </div>                                                 
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-headingThirteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThirteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThirteen">
-                Materiais descartável
-            </button>
-        </h2>
-        <div id="panelsStayOpen-collapseThirteen" class="accordion-collapse collapse"
-            aria-labelledby="panelsStayOpen-headingThirteen">
-            <div class="accordion-body">
-                <div class="row">
-                    <div class="col-4">Material</div>
-                    <div class="col-2">Quant</div>
-                    <div class="col-4">Material</div>
-                    <div class="col-2">Quant</div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                        <label class="form-check-label" for="flexCheckDefault156"
-                            style="position: absolute; top: 0;left: 32px;">
-                            Ataduras
-                        </label>
-                    </div>
-                    <div class="col-2" style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantAtaduras" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;">
-                        <label class="form-check-label" for="flexCheckDefault157"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Manta aluminizada
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantManta" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                        <label class="form-check-label" for="flexCheckDefault158"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Cateter TP. ocúlos
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantCateter" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault159"
-                            style="position: absolute; top: -0;left: 32px;">
-                            Pás do DEA
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantPas" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault160"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Compressa comum
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantCompressa" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault161"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Sonda de aspiração
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantSonda" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                       
-                        <label class="form-check-label" for="flexCheckDefault162"
-                            style="position: absolute; top: 0;left: 32px;">
-                            Kit's
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantKits" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault163"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Soro fisiológico
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantSoro" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault164"
-                            style="position: absolute; top: -8px;left: 32px;">
-                            Luvas Desc. (Pares)
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantLuvas" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;">
-                        
-                        <label class="form-check-label" for="flexCheckDefault165"
-                            style="position: absolute; top: 0;left: 32px;">
-                            Talas PAP.
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantTalas" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
-                    <div class="col-4" style="position: relative;">
-                       
-                        <label class="form-check-label" for="flexCheckDefault166"
-                            style="position: absolute; top: 0;left: 32px;">
-                            Máscara Desc
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantMascara" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                    <div class="col-4" style="position: relative;" placeholder="Outros">
-                    
-                    <label class="form-check-label" for="flexCheckDefault166"
-                            style="position: absolute; top: 0;left: 32px;">
-                            Outros
-                        </label>
-                    </div>
-                    <div class="col-2"
-                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
-                        <input type="text" name="quantOutro" class="form-control" style="width: 80%;padding: 5px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-                            </div>                                                               
+    </div>                                                               
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingFourteen">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseFourteen" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFourteen">
-                Materiais no hospital
+                Materiais do hospital
             </button>
         </h2>
         <div id="panelsStayOpen-collapseFourteen" class="accordion-collapse collapse"
@@ -2440,7 +2268,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseFifteen" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseFifteen">
-                Termo de recusa de atendimento e/ou transporte
+                Termo de recusa
             </button>
         </h2>
         <div id="panelsStayOpen-collapseFifteen" class="accordion-collapse collapse"
@@ -2816,7 +2644,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseNineteen" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseNineteen">
-                Avaliação cinemática
+                Avaliação Cinemática
             </button>
         </h2>
         <div id="panelsStayOpen-collapseNineteen" class="accordion-collapse collapse"
@@ -2942,7 +2770,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwenty" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwenty">
-                Detalhes ambulancia
+                Ambulancia
             </button>
         </h2>
         <div id="panelsStayOpen-collapseTwenty" class="accordion-collapse collapse"
@@ -3046,50 +2874,6 @@
                 }
             });
         });
-    });
-
-    // Obtém o elemento de input pelo ID
-    var inputIdade = document.getElementById("idadePaciente_DP");
-
-    // Adiciona um ouvinte de evento de input para detectar alterações no valor
-    inputIdade.addEventListener("input", function () {
-        // Obtém o valor atual do campo de entrada
-        var valorIdade = inputIdade.value;
-
-        // Exibe o valor no console (ou faça o que quiser com o valor)
-        console.log("Valor da idade:", valorIdade);
-    });
-
-    // Obtém o elemento de input pelo ID
-    var inputIdade = document.getElementById("idadePaciente_DP");
-
-    // Obtém as divs que você deseja afetar
-    var menor5 = document.getElementById("menor5");
-    var maior5 = document.getElementById("maior5");
-    var menor6 = document.getElementById("menor6");
-    var maior6 = document.getElementById("maior6");
-    var menor7 = document.getElementById("menor7");
-    var maior7 = document.getElementById("maior7");
-
-    inputIdade.addEventListener("input", function () {
-
-        var valorIdade = parseInt(inputIdade.value);
-
-        if (valorIdade > 4) {
-            menor5.style.display = "none";
-            maior5.style.display = "block";
-            menor6.style.display = "none";
-            maior6.style.display = "block";
-            menor7.style.display = "none";
-            maior7.style.display = "block";
-        } else {
-            menor5.style.display = "block";
-            maior5.style.display = "none";
-            menor6.style.display = "block";
-            maior6.style.display = "none";
-            menor7.style.display = "block";
-            maior7.style.display = "none";
-        }
     });
 
 </script>

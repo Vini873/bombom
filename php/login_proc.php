@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     $senha = $_POST["senha"];
 
     // Consulta para verificar se o usuário existe
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email_usuario = ?");
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         $usuario_db = $result->fetch_assoc();
 
         // Verifica se a senha fornecida corresponde a senha armazenada
-        if ($senha == $usuario_db['senha_usuario']) {
-            $_SESSION['id_usuario'] = $usuario_db['id_usuario'];
-            $_SESSION['nome_usuario'] = $usuario_db['nome_usuario'];
+        if ($senha == $usuario_db['senha']) {
+            $_SESSION['id_usuario'] = $usuario_db['id'];
+            $_SESSION['nome'] = $usuario_db['nome'];
             $_SESSION['loggedIn'] = true;
 
             // Verifica se o usuário é um administrador
-            if ($usuario_db['tipo_usuario'] === 'admin') {
+            if ($usuario_db['tipo'] === 'admin') {
                 $_SESSION['admin'] = true;
             }
 
