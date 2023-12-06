@@ -2375,36 +2375,10 @@
         </h2>
         <div id="panelsStayOpen-collapseFifteen" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingFifteen">
-            <div class="accordion-body">
-                <div class="row" style="position: relative;height: 40px">Eu: <input type="text" name=""
-                        class="form-control" id="" style="width: 250px; position: absolute; right: 5px;">
-                </div>
-                <div class="row" style="position: relative;height: 40px">Portador da carteira de identidade
-                    RG Nº <input type="text" name="" class="form-control" id=""
-                        style="width: 80px; position: absolute; right: 5px;">
-                </div>
-                <div class="row" style="position: relative;height: 40px">Incrito no CPF sob nº <input type="text"
-                        name="" class="form-control" style="width: 100px; position: absolute; right: 5px;" id=""></div>
-                <div class="row" style="height:260px;">Na qualidade de vítima/Paciente, Usando dos direitos
-                    que a lei me
-                    garante, me recuso neste ato o atendimento e/ou transporte oferecido pelos bombeiros
-                    voluntários de
-                    Guaramirim/SC, e assumo, individualmente a responsibilidade pelas consequências que
-                    possam ocorrer por
-                    razão da minha recusa. Declaro que fui devidamente informado sobre o procedimento pelo
-                    qual eu deveria
-                    me submeter e alertado sobre os riscos à saúde da sua não realização.</div>
-                <div class="row" style="position: relative; height: 40px;">Ass: </div>
-                <div class="row" style="position: relative;height: 40px">Testemunha: <input type="text" name=""
-                        class="form-control" style="width: 125px; position: absolute; right: 5px;" id=""></div>
-                <div class="row" style="position: relative;height: 40px">Doc: <input type="text" name=""
-                        class="form-control" style="width: 125px; position: absolute; right: 5px;" id="">
-                </div>
-                <div class="row" style="position: relative;height: 40px">Testemunha: <input type="text" name=""
-                        class="form-control" style="width: 125px; position: absolute; right: 5px;" id=""></div>
-                <div class="row" style="position: relative;height: 40px">Doc: <input type="text" name=""
-                        class="form-control" style="width: 125px; position: absolute; right: 5px;" id="">
-                </div>
+            <div class="accordion-body" style="width: 300px">
+            <label for="inputImagem">Selecione uma imagem:</label>
+        <input type="file" name="inputImagem" id="inputImagem" accept="image/*">
+        <br>
 
             </div>
         </div>

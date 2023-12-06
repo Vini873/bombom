@@ -610,20 +610,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     }
     // }
 
-  // Certifique-se de que a variável $user_id esteja definida antes de usá-la
-  if (!isset($user_id)) {
-    // Defina $user_id conforme necessário ou redirecione para a página de login
-    header("Location: login.php");
-    exit();
-}
+//   // Certifique-se de que a variável $user_id esteja definida antes de usá-la
+//   if (!isset($user_id)) {
+//     // Defina $user_id conforme necessário ou redirecione para a página de login
+//     header("Location: login.php");
+//     exit();
+// }
 
     // Inserir todos os dados na tabela fichas
     $sql_fichas = "INSERT INTO fichas (data_ficha, idAnamnese_Emergencia_Medica, idAnamnese_Gestacional, idAvaliacao_Cinematica, idAvaliacao_Glasgow, idMateriais_Utilizados_Deixados, idMateriais_Utilizados_Descartavel, idObjetos_Recolhidos, idObservacoes_Importantes, 
-    idPaciente, idProblemas_Encontrados, idProcedimentos_Efetuados, idSinais_e_Sintomas, idSinais_Vitais, idTipo_de_Ocorrencia,  idDecisao_Transporte, idDetalhes_Viagem, idForma_de_Conducao, idTransporte_Vitima_Era, id_usuario) 
+    idPaciente, idProblemas_Encontrados, idProcedimentos_Efetuados, idSinais_e_Sintomas, idSinais_Vitais, idTipo_de_Ocorrencia,  idDecisao_Transporte, idDetalhes_Viagem, idForma_de_Conducao, idTransporte_Vitima_Era) 
     VALUES ('$data_ocorrencia', '$last_anm_medica_id', '$last_gestacional_id', '$last_cinematica_id', '$last_glasgow_id', 
     '$last_matdeix_id', '$last_matdesc_id', '$last_objetos_id', '$last_observacoes_id', '$last_paciente_id', '$last_problemas_id', '$last_procedimentos_id', 
     '$last_sinais_sintomas_id', '$last_sinais_vitais_id', '$last_tipo_ocorrencia_id', '$last_decisao_transporte_id', '$last_detalhes_viagem_id', 
-    '$last_forma_conducao_id', '$last_vitima_id', '$user_id')";
+    '$last_forma_conducao_id', '$last_vitima_id')";
 
     // Executar a query para fichas
     if ($conn->query($sql_fichas) === TRUE) {
