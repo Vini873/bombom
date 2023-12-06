@@ -1,4 +1,10 @@
 <?php
+// Reseta a sessão anterior caso exista
+session_start();
+session_unset();
+session_destroy();
+session_start();
+
 include("dbdb.php");
 
 // Verifica se o formulário foi enviado

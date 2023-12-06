@@ -486,141 +486,129 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                            
                       
-    function inserirProcedimento($conn, $procedimento, $valor)
-    {
-        $sql = "INSERT INTO procedimentos_efetuados ($procedimento) VALUES ($valor)";
-        if ($conn->query($sql) === TRUE) {
-            echo "Registro inserido com sucesso!";
+    $procedimentos_efetuados = [];
+    $procedimentos = [
+        "Aspiracao", "Avaliacao_Inicial", "Avaliacao_Dirigida", "Avaliacao_Continuada", "Chave_de_Rautek",
+        "Canula_de_Guedel", "Desobstrucao_de_VA", "Emprego_do_DEA", "Gerenciamento_de_Riscos",
+        "Limpeza_de_Ferimentos", "Curativos", "Compressivo", "Encravamento", "Ocular", "Queimadura",
+        "Simples", "tres_Pontas", "Imobilizacoes", "Membro_INF_dir", "Membro_INF_esq", "Membro_SUP_dir",
+        "Membro_SUP_esq", "Quadril", "Cervical", "Maca_Sobre_Rodas", "Maca_Rigida", "Ponte",
+        "Retirado_Capacete", "RCP", "Rolamento_90", "Rolamento_180", "Tomada_Decisao", "Tratado_Choque",
+        "Uso_de_Canula", "Uso_Colar", "tamColar", "Uso_KED", "Uso_TTF", "Ventilacao_Suporte", "Oxigenioterapia",
+        "Reanimador", "Reanimador_LPM", "Oxigenioterapia_LPM", "Meios_Auxiliares", "Celesc", "Def_Civil",
+        "IGP_PC", "Policia", "Policia_Value", "Samu", "Samu_Value", "CIT", "OutrosMeios"
+    ];
+        // Coleta os dados marcados
+    foreach ($procedimentos as $procedimento) {
+        if (isset($_POST[$procedimento])) {
+            $procedimentos_efetuados[$procedimento] = 1;
         } else {
-            echo "Erro ao inserir registro: " . $conn->error;
+            $procedimentos_efetuados[$procedimento] = NULL;
         }
     }
-    
-    // Mapeamento dos checkboxes para os campos no banco de dados
-    $checkboxes = array(
-        "Aspiracao",
-        "Avaliacao_Inicial",
-        "Avaliacao_Dirigida",
-        "Chave_de_Rautek",
-        "Canula_de_Guedel",
-        "Desobstrucao_de_VA",
-        "Emprego_do_DEA",
-        "Gerenciamento_de_Riscos",
-        "Limpeza_de_Ferimentos",
-        "Curativos",
-        "Compressivo",
-        "Encravamento",
-        "Ocular",
-        "Queimadura",
-        "Simples",
-        "3_Pontas",
-        "Imobilizacoes",
-        "Membro_INF_dir",
-        "Membro_INF_esq",
-        "Membro_SUP_dir",
-        "Membro_SUP_esq",
-        "Quadril",
-        "Cervical",
-        "Maca_Sobre_Rodas",
-        "Maca_Rigida",
-        "Ponte",
-        "Retirado_Capacete",
-        "RCP",
-        "Rolamento_90",
-        "Rolamento_180",
-        "Tomada_Decisao",
-        "Tratado_Choque",
-        "Uso_de_Canula",
-        "Uso_Colar",
-        "Uso_KED",
-        "Uso_TTF",
-        "Ventilacao_Suporte",
-        "Oxigenioterapia",
-        "Reanimador",
-        "Celesc",
-        "Policia",
-        "Def_Civil",
-        "Samu",
-        "CIT",
-        "OutrosMeios"
-    );
-    
-    // Processar dados do formulário
-    foreach ($checkboxes as $procedimento) {
-        $valor = isset($_POST[$procedimento]) ? 1 : 0; // 1 se marcado, 0 se não marcado
-        inserirProcedimento($conn, $procedimento, $valor);
+
+    // Coleta os dados de texto
+    $procedimentos_efetuados['tamColar'] = isset($_POST['tamColar']) ? "'" . $conn->real_escape_string($_POST['tamColar']) . "'" : 'NULL';
+    $procedimentos_efetuados['Reanimador_LPM'] = isset($_POST['Reanimador_LPM']) ? "'" . $conn->real_escape_string($_POST['Reanimador_LPM']) . "'" : 'NULL';
+    $procedimentos_efetuados['Oxigenioterapia_LPM'] = isset($_POST['Oxigenioterapia_LPM']) ? "'" . $conn->real_escape_string($_POST['Oxigenioterapia_LPM']) . "'" : 'NULL';
+    $selectedPoliciaValue = isset($_POST['Policia_Value']) ? $conn->real_escape_string($_POST['Policia_Value']) : null;
+    $selectedPoliciaValue = !empty($selectedPoliciaValue) ? "'" . $selectedPoliciaValue . "'" : 'NULL';
+    $selectedSamuValue = isset($_POST['Samu_Value']) ? $conn->real_escape_string($_POST['Samu_Value']) : null;
+    $selectedSamuValue = !empty($selectedSamuValue) ? "'" . $selectedSamuValue . "'" : 'NULL';
+    $procedimentos_efetuados['OutrosMeios'] = isset($_POST['OutrosMeios']) ? "'" . $conn->real_escape_string($_POST['OutrosMeios']) . "'" : 'NULL';
+
+    $procedimentos_efetuados['Policia_Value'] = $selectedPoliciaValue;
+    $procedimentos_efetuados['Samu_Value'] = $selectedSamuValue;
+
+    // Prepara os valores para a string SQL
+    $columns = implode(", ", array_map(function ($column) {
+        return "`$column`";
+    }, array_keys($procedimentos_efetuados)));
+
+    $values = implode(", ", array_map(function ($value) use ($conn) {
+        return is_null($value) ? "NULL" : $value;
+    }, $procedimentos_efetuados));
+
+    // Insere os dados na tabela ficha_procedimentos_efetuados
+    $sql_procedimentos = "INSERT INTO procedimentos_efetuados ($columns) VALUES ($values)";
+
+    // Executar a query para ficha_procedimentos_efetuados
+    if ($conn->query($sql_procedimentos) === TRUE) {
+        $last_procedimentos_id = $conn->insert_id;
+    } else {
+        echo "Erro ao inserir dados: " . $conn->error;
     }
 
                            
                           
-    $local1 = $_POST["1local"];
-    $lado1 = $_POST["1lado"];
-    $face1 = $_POST["1face"];
-    $tipo1 = $_POST["1tipo"];
-    $local2 = $_POST["2local"];
-    $lado2 = $_POST["2lado"];
-    $face2 = $_POST["2face"];
-    $tipo2 = $_POST["2tipo"];
-    $local3 = $_POST["3local"];
-    $lado3 = $_POST["3lado"];
-    $face3 = $_POST["3face"];
-    $tipo3 = $_POST["3tipo"];
-    $local4 = $_POST["4local"];
-    $lado4 = $_POST["4lado"];
-    $face4 = $_POST["4face"];
-    $tipo4 = $_POST["4tipo"];
-    $Cabeca_Value = $_POST["Cabeca_Value"];
-    $Pescoco_Value = $_POST["Pescoco_Value"];
-    $Tant_Value = $_POST["Tant_Value"];
-    $Tpos_Value = $_POST["Tpos_Value"];
-    $Genit_Value = $_POST["Genit_Value"];
-    $MID_Value = $_POST["MID_Value"];
-    $MIE_Value = $_POST["MIE_Value"];
-    $MSD_Value = $_POST["MSD_Value"];
-    $MSE_Value = $_POST["MSE_Value"];
+    // $local1 = $_POST["local1"];
+    // $lado1 = $_POST["lado1"];
+    // $face1 = $_POST["face1"];
+    // $tipo1 = $_POST["tipo1"];
+    // $local2 = $_POST["local2"];
+    // $lado2 = $_POST["lado2"];
+    // $face2 = $_POST["face2"];
+    // $tipo2 = $_POST["tipo2"];
+    // $local3 = $_POST["local3"];
+    // $lado3 = $_POST["lado3"];
+    // $face3 = $_POST["face3"];
+    // $tipo3 = $_POST["tipo3"];
+    // $local4 = $_POST["local4"];
+    // $lado4 = $_POST["lado4"];
+    // $face4 = $_POST["face4"];
+    // $tipo4 = $_POST["tipo4"];
+    // $Cabeca_Value = $_POST["Cabeca_Value"];
+    // $Pescoco_Value = $_POST["Pescoco_Value"];
+    // $Tant_Value = $_POST["Tant_Value"];
+    // $Tpos_Value = $_POST["Tpos_Value"];
+    // $Genit_Value = $_POST["Genit_Value"];
+    // $MID_Value = $_POST["MID_Value"];
+    // $MIE_Value = $_POST["MIE_Value"];
+    // $MSD_Value = $_POST["MSD_Value"];
+    // $MSE_Value = $_POST["MSE_Value"];
 
-    // Insere os dados na tabela localizacao_dos_traumas
-    $sql_localizacao_traumas = "INSERT INTO localizacao_dos_traumas  (local1, lado1, face1, tipo1, local2, lado2, face2, tipo2,  local3, lado3, face3,
-     tipo3, local4, lado4, face4, tipo4, cabeca, pescoco, t_ant, t_pos, genit, MID, MIE, MSD, MSE)
-    VALUES ('$local1', '$lado1', '$face1', '$tipo1', '$local2', '$lado2', '$face2', '$tipo2', '$local3', '$lado3', '$face3', '$tipo3', '$local4', '$lado4',
-     '$face4', '$tipo4', '$Cabeca_Value', '$Pescoco_Value', '$Tant_Value', '$Tpos_Value', '$Genit_Value', '$MID_Value', '$MIE_Value', '$MSD_Value', '$MSE_Value')";
+    // // Insere os dados na tabela localizacao_dos_traumas
+    // $sql_localizacao_traumas = "INSERT INTO localizacao_dos_traumas  (local1, lado1, face1, tipo1, local2, lado2, face2, tipo2,  local3, lado3, face3,
+    //  tipo3, local4, lado4, face4, tipo4, cabeca, pescoco, t_ant, t_pos, genit, MID, MIE, MSD, MSE)
+    // VALUES ('$local1', '$lado1', '$face1', '$tipo1', '$local2', '$lado2', '$face2', '$tipo2', '$local3', '$lado3', '$face3', '$tipo3', '$local4', '$lado4',
+    //  '$face4', '$tipo4', '$Cabeca_Value', '$Pescoco_Value', '$Tant_Value', '$Tpos_Value', '$Genit_Value', '$MID_Value', '$MIE_Value', '$MSD_Value', '$MSE_Value')";
 
-    // Executar a query para localizacao_dos_traumas
-    if($conn->query($sql_localizacao_traumas) === TRUE) {
-        $last_localizacao_traumas_id = $conn->insert_id;
-    }else{
-        echo "Erro ao inserir dados:". $conn->error;
-    }
+    // // Executar a query para localizacao_dos_traumas
+    // if($conn->query($sql_localizacao_traumas) === TRUE) {
+    //     $last_localizacao_traumas_id = $conn->insert_id;
+    // }else{
+    //     echo "Erro ao inserir dados:". $conn->error;
+    // }
 
                    
       
-    if(isset($_FILES['imagem_recusa'])){
-        $imagem_recusa = $_FILES['imagem_recusa'];
+    // if(isset($_FILES['imagem_recusa'])){
+    //     $imagem_recusa = $_FILES['imagem_recusa'];
 
-        if($imagem_recusa['error'])
-        die("Falha ao enviar o arquivo.");
+    //     if($imagem_recusa['error'])
+    //     die("Falha ao enviar o arquivo.");
 
-        if($imagem_recusa['size'] > 2097152)
-        die("Arquivo muito grande! Máx: 2MB");
+    //     if($imagem_recusa['size'] > 2097152)
+    //     die("Arquivo muito grande! Máx: 2MB");
 
-        $pasta = "../TermoRecusa/";
-        $nomeDoArquivo = $imagem_recusa['name'];
-        $novoNomeArquivo = uniqid();
-        $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    //     $pasta = "../TermoRecusa/";
+    //     $nomeDoArquivo = $imagem_recusa['name'];
+    //     $novoNomeArquivo = uniqid();
+    //     $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
 
-        if($extensao != "jpg" && $extensao != "png")
-        die("Tipo de arquivo inválido!");
+    //     if($extensao != "jpg" && $extensao != "png")
+    //     die("Tipo de arquivo inválido!");
 
-        $path = $pasta . $novoNomeArquivo . "." . $extensao;
+    //     $path = $pasta . $novoNomeArquivo . "." . $extensao;
 
-        $next = move_uploaded_file($imagem_recusa["tmp_name"], $path);
-        if($next){
-            $conn->query("INSERT INTO termo_recusa(nome_imagem, caminho_imagem) VALUES('$nomeDoArquivo', '$path')");
-        $last_termo_id = $conn->insert_id;
-        }else{
-        echo "Falha ao enviar o arquivo";
-        }
-    }
+    //     $next = move_uploaded_file($imagem_recusa["tmp_name"], $path);
+    //     if($next){
+    //         $conn->query("INSERT INTO termo_recusa(nome_imagem, caminho_imagem) VALUES('$nomeDoArquivo', '$path')");
+    //     $last_termo_id = $conn->insert_id;
+    //     }else{
+    //     echo "Falha ao enviar o arquivo";
+    //     }
+    // }
 
   // Certifique-se de que a variável $user_id esteja definida antes de usá-la
   if (!isset($user_id)) {
@@ -630,13 +618,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
     // Inserir todos os dados na tabela fichas
-    $sql_fichas = "INSERT INTO fichas (data_ficha, idAnamnese_Emergencia_Medica, idAnamnese_Gestacional, idAvaliacao_Cinematica, idAvaliacao_Glasgow, 
-    idLocalizacao_dos_Traumas, idMateriais_Utilizados_Deixados, idMateriais_Utilizados_Descartavel, idObjetos_Recolhidos, idObservacoes_Importantes, 
-    idPaciente, idProblemas_Encontrados, idProcedimentos_Efetuados, idSinais_e_Sintomas, idSinais_Vitais, idTermoRecusa, idTipo_de_Ocorrencia, 
-    idDecisao_Transporte, idDetalhes_Viagem, idForma_de_Conducao, idTransporte_Vitima_Era, id_usuario) 
-    VALUES ('$data_ocorrencia', '$last_anm_medica_id', '$last_gestacional_id', '$last_cinematica_id', '$last_glasgow_id', '$last_localizacao_traumas_id', 
+    $sql_fichas = "INSERT INTO fichas (data_ficha, idAnamnese_Emergencia_Medica, idAnamnese_Gestacional, idAvaliacao_Cinematica, idAvaliacao_Glasgow, idMateriais_Utilizados_Deixados, idMateriais_Utilizados_Descartavel, idObjetos_Recolhidos, idObservacoes_Importantes, 
+    idPaciente, idProblemas_Encontrados, idProcedimentos_Efetuados, idSinais_e_Sintomas, idSinais_Vitais, idTipo_de_Ocorrencia,  idDecisao_Transporte, idDetalhes_Viagem, idForma_de_Conducao, idTransporte_Vitima_Era, id_usuario) 
+    VALUES ('$data_ocorrencia', '$last_anm_medica_id', '$last_gestacional_id', '$last_cinematica_id', '$last_glasgow_id', 
     '$last_matdeix_id', '$last_matdesc_id', '$last_objetos_id', '$last_observacoes_id', '$last_paciente_id', '$last_problemas_id', '$last_procedimentos_id', 
-    '$last_sinais_sintomas_id', '$last_sinais_vitais_id', '$last_termo_id', '$last_tipo_ocorrencia_id', '$last_decisao_transporte_id', '$last_detalhes_viagem_id', 
+    '$last_sinais_sintomas_id', '$last_sinais_vitais_id', '$last_tipo_ocorrencia_id', '$last_decisao_transporte_id', '$last_detalhes_viagem_id', 
     '$last_forma_conducao_id', '$last_vitima_id', '$user_id')";
 
     // Executar a query para fichas

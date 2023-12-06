@@ -51,6 +51,11 @@
             margin: 0px;
         }
 
+        .container {
+            margin: 1px;
+            /* background-color: red;  */
+               }
+
         .accordion-button:not(.collapsed) {
     color: red;
     background-color: white;
@@ -61,10 +66,10 @@
 
 <body>
     <div class="tudo">
-<div class="container-fluid m-0 p-0">
+    <div class="container-fluid m-0 p-0">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block p-0">
-                <div class="container2" style="max-width: 2000px;">
+            <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block p-0" style="background-color: red;">
+                <div class="container" style="max-width: 2000px;">
                     <a class="navbar-brand mb-0 h1" href="#">S.A. Bombeiros</a>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -78,13 +83,13 @@
 
             <div class="d-lg-none">
 
-                <nav class="navbar navbar-light bg-light p-0">
-                    <div class="container2">
+                <nav class="navbar navbar-light bg-light p-0" style="background-color: red;" >
+                    <div class="container">
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNav">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <a class="navbar-brand" href="#">S.A. Bombeiros</a>
+                        <a class="navbar-brand" href="pagina_inicial.php">S.A. Bombeiros</a>
                     </div>
                 </nav>
 
@@ -114,28 +119,23 @@
         <form action="salvar_ocorrencia.php" method="post">
             <div class="row text">
                 <div class="titulo" style="margin-left: 10px;">
-                    <a href="ocorrencia.php" class="display-1" style="color: white;text-decoration: none;font-weight: 600; margin-top: 15px; margin-bottom: 15px">Registrar ocorrência</a>
+                    <a href="" class="display-1" style="color: white;text-decoration: none;font-weight: 600; margin-top: 15px; margin-bottom: 15px">Registrar ocorrência</a>
                 </div>
             </div>
-                     
-
-                     
             <div class="ocorrenciacompleta" style="display: inline-flex; flex-wrap: wrap;width: 100%; justify-content: center; background-color:white;">
             <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne">
-                            Detalhes Paciente
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                        aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne" style="width: 300px;">
+                Detalhes Paciente
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
                             <div class="row">
                                 <div class="col-1">
-                                    <input id="date" type="date" name="date" min="yyyy-mm-dd" />
+                                    <input id="date" type="date" name="date" min="yyyy-mm-dd" style=" border-top: 0px; border-left: 0px; border-right: 0px; margin-bottom: 5px;">
                                 </div>
                                 <div class="col-4"></div>
                                 <div class="col-auto">
@@ -199,9 +199,7 @@
                       
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" style="width: 300px;">
                         Tipo de ocorrencia
                     </button>
                 </h2>
@@ -387,9 +385,7 @@
                      
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree" style="width: 300px;">
                         Glasgow
                     </button>
                 </h2>
@@ -644,9 +640,7 @@
                      
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour" style="width: 300px;">
                         Sinais vitais
                     </button>
                 </h2>
@@ -718,9 +712,7 @@
                          
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive" style="width: 300px;">
                         Problemas suspeitos
                     </button>
                 </h2>
@@ -728,7 +720,7 @@
                     aria-labelledby="panelsStayOpen-headingFive">
                     <div class="accordion-body">
                         <div class="row"
-                            style="height: 150px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);">
+                            style="height: 150px; font-size: 12px; align-items: center;">
                             <div class="col" style="position:relative;"><input class="form-check-input" type="checkbox"
                                     name="Psiquiátrico" id="Psiquiátrico">
                                 <label class="form-check-label" for="Psiquiátrico" style="position: absolute; top: 0;">
@@ -737,7 +729,7 @@
                             </div>
                         </div>
                         <div class="row"
-                            style="height: 150px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);">
+                            style="height: 150px; font-size: 12px; align-items: center;">
                             <div class="col-4" style="position:relative;">
                                 <label class="form-check-label" for="Obstetrico" style="position: absolute; top: 0;">
                                     Obstétrico
@@ -763,7 +755,7 @@
                             </div>
                         </div>
                         <div class="row"
-                            style="height: 125px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);">
+                            style="height: 125px; font-size: 12px; align-items: center;">
                             <div class="col-6" style="position:relative;">
                                 <label class="form-check-label" for="Respiratorio" style="position: absolute; top: 0;">
                                     Respiratório
@@ -783,7 +775,7 @@
                             </div>
                         </div>
                         <div class="row"
-                            style="height: 125px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);">
+                            style="height: 125px; font-size: 12px; align-items: center;">
                             <div class="col-6" style="position:relative;">
                                 <label class="form-check-label" for="Diabetes" style="position: absolute; top: 0;">
                                     Diabetes
@@ -803,7 +795,7 @@
                             </div>
                         </div>
                         <div class="row"
-                            style="height: 225px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);" ">
+                            style="height: 225px; font-size: 12px; align-items: center;">
                         <div class=" col-4">
                             <label class="form-check-label" for="Transporte">
                                 Transporte
@@ -842,7 +834,7 @@
                         </div>
                     </div>
                     <div class="row"
-                        style="height: 150px; font-size: 12px; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.3);">
+                        style="height: 150px; font-size: 12px; align-items: center;">
                         <div class="col" style="position:relative;">
                             <label class="form-check-label" for="Outros2"
                                 style="position: absolute; top: 0;left: 32px;">
@@ -854,9 +846,7 @@
     </div>                           
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix" style="width: 300px;">
                 Localização dos traumas
             </button>
         </h2>
@@ -871,55 +861,55 @@
                         <div class="row">
                             <div class="col">1</div>
                             <div class="accordion-body">
-                                <input type="text" name="1local" id="1local" class="form-control" placeholder="Local">
+                                <input type="text" name="local1" id="1local" class="form-control" placeholder="Local">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="1lado" id="1lado" class="form-control" placeholder="Lado">
+                                <input type="text" name="lado1" id="1lado" class="form-control" placeholder="Lado">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="1face" id="1face" class="form-control" placeholder="Face">
+                                <input type="text" name="face1" id="1face" class="form-control" placeholder="Face">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="1tipo" id="1tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
+                                <input type="text" name="tipo1" id="1tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
                             </div>
                             <div class="col">2</div>
                             <div class="accordion-body">
-                                <input type="text" name="2local" id="2local" class="form-control" placeholder="Local">
+                                <input type="text" name="local2" id="2local" class="form-control" placeholder="Local">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="2lado" id="2lado" class="form-control" placeholder="Lado">
+                                <input type="text" name="lado2" id="2lado" class="form-control" placeholder="Lado">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="2face" id="2face" class="form-control" placeholder="Face">
+                                <input type="text" name="face2" id="2face" class="form-control" placeholder="Face">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="2tipo" id="2tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
+                                <input type="text" name="tipo2" id="2tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
                             </div>
                             <div class="col">3</div>
                             <div class="accordion-body">
-                                <input type="text" name="3local" id="3local" class="form-control" placeholder="Local">
+                                <input type="text" name="local3" id="3local" class="form-control" placeholder="Local">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="3lado" id="3lado" class="form-control" placeholder="Lado">
+                                <input type="text" name="lado3" id="3lado" class="form-control" placeholder="Lado">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="3face" id="3face" class="form-control" placeholder="Face">
+                                <input type="text" name="face3" id="3face" class="form-control" placeholder="Face">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="3tipo" id="3tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
+                                <input type="text" name="tipo3" id="3tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
                             </div>
                             <div class="col">4</div>
                             <div class="accordion-body">
-                                <input type="text" name="4local" id="4local" class="form-control" placeholder="Local">
+                                <input type="text" name="local4" id="4local" class="form-control" placeholder="Local">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="4lado" id="4lado" class="form-control" placeholder="Lado">
+                                <input type="text" name="lado4" id="4lado" class="form-control" placeholder="Lado">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="4face" id="4face" class="form-control" placeholder="Face">
+                                <input type="text" name="face4" id="4face" class="form-control" placeholder="Face">
                             </div>
                             <div class="accordion-body">
-                                <input type="text" name="4tipo" id="4tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
+                                <input type="text" name="tipo4" id="4tipo" class="form-control" placeholder="Tipo (Ferimentos/Fraturas/Entorses/Luxação/Contusão)">
                             </div>
                         </div>
                         <div class="row">
@@ -1040,9 +1030,7 @@
                             </div>                
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven" style="width: 300px;">
                 Objetos recolhidos
             </button>
         </h2>
@@ -1055,9 +1043,7 @@
                             </div>                                         
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-headingEight">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight" style="width: 300px;">
                         Sinais e sintomas
                     </button>
                 </h2>
@@ -1476,9 +1462,7 @@
                             </div>                     
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingNine">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseNine">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine" style="width: 300px;">
                 Forma de condução
             </button>
         </h2>
@@ -1514,9 +1498,7 @@
                             </div>                          
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen" style="width: 300px;">
                 Vítima era
             </button>
         </h2>
@@ -1606,17 +1588,17 @@
             </div>
         </div>
                             </div>                                         
-    <div class="accordion-item">
+                            <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingEleven">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseEleven" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseEleven">
+                aria-controls="panelsStayOpen-collapseEleven" style="width: 300px;">
                 Decisão transporte
             </button>
         </h2>
         <div id="panelsStayOpen-collapseEleven" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingEleven">
-            <div class="accordion-body">
+            <div class="accordion-body" style= "width: 440px;">
                 <div class="row">
                     <div class="col-6" style="position: relative;">
                         <input class="form-check-input" type="radio" value="Crítico" name="Decisao_Transporte"
@@ -1681,18 +1663,16 @@
                 </div>
             </div>
         </div>
-                            </div>                                           
+    </div>                                           
                             <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTwelve">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwelve">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwelve" style="width: 300px;">
                 Procedimentos efetuados
             </button>
         </h2>
         <div id="panelsStayOpen-collapseTwelve" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingTwelve">
-            <div class="accordion-body">
+            <div class="accordion-body" style="width: 300px; gap: 10px; display: flex; flex-direction: column;">
                 <div class="row" style="position: relative;">
                     <input class="form-check-input" type="checkbox" name="Aspiracao" id="Aspiracao">
                     <label class="form-check-label" for="Aspiracao"
@@ -1701,8 +1681,8 @@
                     </label>
                 </div>
                 <div class="row" style="position: relative;">
-                    <input class="form-check-input" type="checkbox" name="Avalicao_Inicial" id="Avalicao_Inicial">
-                    <label class="form-check-label" for="Avalicao_Inicial"
+                    <input class="form-check-input" type="checkbox" name="Avaliacao_Inicial" id="Avaliacao_Inicial">
+                    <label class="form-check-label" for="Avaliacao_Inicial"
                         style="position: absolute; top: 0;left: 32px;">
                         Avaliçao inicial
                     </label>
@@ -1813,10 +1793,10 @@
                     </label>
                 </div>
                 <div class="row" style="position: relative;">
-                    <input class="form-check-input" type="checkbox" name="Imobilacoes" id="Imobilacoes">
-                    <label class="form-check-label" for="Imobilacoes"
+                    <input class="form-check-input" type="checkbox" name="Imobilzacoes" id="Imobilzacoes">
+                    <label class="form-check-label" for="Imobilzacoes"
                         style="position: absolute; top: 0;left: 32px;">
-                        Imobilações
+                        Imobilzações
                     </label>
                 </div>
                 <div class="row" style="position: relative;">
@@ -1936,7 +1916,7 @@
                     <label class="form-check-label" for="Uso_Colar"
                         style="position: absolute; top: 0;left: 32px; display: flex;align-items: center;">
                         Uso colar <input type="text" name="tamColar" id="tamColar" placeholder="Tamanho:" style="display: flex;
-                width: 150px;
+                width: 50px;
                 padding: 0.200rem 0.50rem;
                 margin-left: 50px;
                 font-size: 1rem;
@@ -1979,7 +1959,7 @@
                     <label class="form-check-label" for="Oxigenioterapia"
                         style="position: absolute; top: 0;left: 32px; display: flex;align-items: center;">
                         Oxigenioterapia <input type="text" name="Oxigenioterapia_LPM" id="Oxigenioterapia_LPM" placeholder="LPM:" style="display: flex;
-                width: 150px;
+                width: 50px;
                 padding: 0.200rem 0.50rem;
                 margin-left: 50px;
                 font-size: 1rem;
@@ -2001,7 +1981,7 @@
                     <label class="form-check-label" for="Reanimador"
                         style="position: absolute; top: 0;left: 32px; display: flex;align-items: center;">
                         Reanimador <input type="text" name="Reanimador_LPM" id="Reanimador_LPM" placeholder="LPM:" style="display: flex;
-                width: 150px;
+                width: 50px;
                 padding: 0.200rem 0.50rem;
                 margin-left: 50px;
                 font-size: 1rem;
@@ -2081,33 +2061,179 @@
                     </label>
                 </div>
                 <div class="row" style="position: relative; display: flex; align-items: center;height: 46px;">
-                    <input class="form-check-input" type="checkbox" name="outrosMeios" id="outrosMeios">
+                    <input class="form-check-input" type="checkbox" name="outrosMeios" id="outrosMeios" placeholder="Outros">
                     <input type="text" name="OutrosMeios" class="form-control" style="width: 200px; margin-left: 25px;">
                 </div>
             </div>
         </div>
-    </div>                                                               
+    </div>   
     <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-headingFourteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseFourteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseFourteen">
-                Materiais do hospital
+        <h2 class="accordion-header" id="panelsStayOpen-headingThirteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThirteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseThirteen" style="width: 300px;">
+                Materiais utilizados descartável
             </button>
         </h2>
-        <div id="panelsStayOpen-collapseFourteen" class="accordion-collapse collapse"
-            aria-labelledby="panelsStayOpen-headingFourteen">
-            <div class="accordion-body">
+        <div id="panelsStayOpen-collapseThirteen" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingThirteen">
+            <div class="accordion-body" style="padding: 1rem 1.25rem; display: inline-flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
                 <div class="row">
                     <div class="col-4">Material</div>
                     <div class="col-2">Quant</div>
                     <div class="col-4">Material</div>
                     <div class="col-2">Quant</div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
+                        <label class="form-check-label" for="flexCheckDefault156"
+                            style="position: absolute; top: 0;left: 32px;">
+                            Ataduras
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantAtaduras" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault157"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Manta aluminizada
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantManta" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault158"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Cateter TP. ocúlos
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantCateter" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault159"
+                            style="position: absolute; top: -0;left: 32px;">
+                            Pás do DEA
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantPas" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault160"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Compressa comum
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantCompressa" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault161"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Sonda de aspiração
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantSonda" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault162"
+                            style="position: absolute; top: 0;left: 32px;">
+                            Kit's
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantKits" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault163"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Soro fisiológico
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantSoro" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault164"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            Luvas Desc. (Pares)
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantLuvas" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault165"
+                            style="position: absolute; top: 0;left: 32px;">
+                            Talas PAP.
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantTalas" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault166"
+                            style="position: absolute; top: 0;left: 32px;">
+                            Máscara Desc
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantMascara" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                    <div class="col-4" style="position: relative;">
+                        <label class="form-check-label" for="flexCheckDefault167"
+                            style="position: absolute; top: -8px;left: 32px;">
+                            <input type="text" class="form-control" name="Outro_Mat" placeholder="Outros">
+                        </label>
+                    </div>
+                    <div class="col-2"
+                        style="padding: 0;display: flex;flex-direction: column;align-items: center;">
+                        <input type="text" name="quantOutro" class="form-control" style="width: 80%;padding: 5px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                                                            
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFourteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFourteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseFourteen" style="width: 300px;">
+                Materiais do hospital
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFourteen" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingFourteen">
+            <div class="accordion-body" style="padding: 1rem 1.25rem; display: inline-flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div class="row">
+                    <div class="col-4">Material</div>
+                    <div class="col-2">Quant</div>
+                    <div class="col-4">Material</div>
+                    <div class="col-2">Quant</div>
+                </div>
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
+                    <div class="col-4" style="position: relative;">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
                             Base do estabiliza.
@@ -2118,8 +2244,6 @@
                         <input type="text" name="quantBase" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             T.T.F.
@@ -2130,10 +2254,8 @@
                         <input type="text" name="quantTTF" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             Colar
@@ -2144,8 +2266,6 @@
                         <input type="text" name="QuantColar1" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
                             Tirante Aranha
@@ -2156,10 +2276,8 @@
                         <input type="text" name="quantTiranteA" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             Colar
@@ -2170,8 +2288,6 @@
                         <input type="text" name="quantColar2" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
                             Tirante de cabeça
@@ -2182,10 +2298,8 @@
                         <input type="text" name="quantTiranteC" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
                             Coxins Estabiliza
@@ -2196,8 +2310,6 @@
                         <input type="text" name="quantCoxins" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             Cânula
@@ -2208,10 +2320,8 @@
                         <input type="text" name="quantCanula" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             KED
@@ -2222,11 +2332,9 @@
                         <input type="text" name="quantKED" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
-                            <input type="text" class="form-control" name="Outro_Mat1" id="Outro_Mat1">
+                            <input type="text" class="form-control" name="Outro_Mat1" id="Outro_Mat1" placeholder="Outros">
                         </label>
                     </div>
                     <div class="col-2"
@@ -2234,10 +2342,8 @@
                         <input type="text" name="quantOutro1" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                 </div>
-                <div class="row" style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center;">
+                <div class="row" padding-top: 4px;padding-bottom: 4px;display: flex;align-items: flex-start;>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: 0;left: 32px;">
                             Maca rígida
@@ -2248,11 +2354,9 @@
                         <input type="text" name="quantMaca" class="form-control" style="width: 80%;padding: 5px;">
                     </div>
                     <div class="col-4" style="position: relative;">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault89"
-                            style="display: block; ">
                         <label class="form-check-label" for="flexCheckDefault89"
                             style="position: absolute; top: -8px;left: 32px;">
-                            <input type="text" class="form-control" name="Outro_Mat2" id="Outro_Mat2">
+                            <input type="text" class="form-control" name="Outro_Mat2" id="Outro_Mat2" placeholder="Outros">
                         </label>
                     </div>
                     <div class="col-2"
@@ -2265,9 +2369,7 @@
                             </div>                             
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingFifteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseFifteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseFifteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFifteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseFifteen" style="width: 300px;">
                 Termo de recusa
             </button>
         </h2>
@@ -2309,9 +2411,7 @@
                             </div>                                           
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSixteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseSixteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseSixteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSixteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseSixteen" style="width: 300px;">
                 Observações importantes
             </button>
         </h2>
@@ -2324,9 +2424,7 @@
                             </div>                                                      
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSeventeen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseSeventeen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseSeventeen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeventeen" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeventeen" style="width: 300px;">
                 Anamnese da emergência médica
             </button>
         </h2>
@@ -2451,9 +2549,7 @@
                             </div>                                              
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingEighteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseEighteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseEighteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEighteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseEighteen" style="width: 300px;">
                 Anamnese gestacional
             </button>
         </h2>
@@ -2641,19 +2737,17 @@
                             </div>                           
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingNineteen">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseNineteen" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseNineteen">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNineteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseNineteen" style="width: 300px;">
                 Avaliação Cinemática
             </button>
         </h2>
         <div id="panelsStayOpen-collapseNineteen" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingNineteen">
-            <div class="accordion-body">
+            <div class="accordion-body" style="width: 400px">
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Distúrbio de comportamento</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="disturbio_comportamento" value="Sim"
                             id="flexRadioDefaultSim5">
                         <label class="form-check-label" for="flexRadioDefaultSim5">
@@ -2669,7 +2763,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Encontra de capacete</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="encontra_capacete" value="Sim"
                             id="flexRadioDefaultSim6">
                         <label class="form-check-label" for="flexRadioDefaultSim6">
@@ -2685,7 +2779,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Encontrado de cinto</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="encontrado_cinto" value="Sim"
                             id="flexRadioDefaultSim7">
                         <label class="form-check-label" for="flexRadioDefaultSim7">
@@ -2701,7 +2795,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Para-brisa avariado</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="para_brisa_avariado" value="Sim"
                             id="flexRadioDefaultSim8">
                         <label class="form-check-label" for="flexRadioDefaultSim8">
@@ -2717,7 +2811,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Caminhando na cena</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="caminhando_na_cena" value="Sim"
                             id="flexRadioDefaultSim9">
                         <label class="form-check-label" for="flexRadioDefaultSim9">
@@ -2733,7 +2827,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Painel avariado</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="painel_avariado" value="Sim"
                             id="flexRadioDefaultSim10">
                         <label class="form-check-label" for="flexRadioDefaultSim10">
@@ -2749,7 +2843,7 @@
                 <div class="row" style="height: 30px;">
                     <div class="col-8">
                         Volante torcido</div>
-                    <div class="col-4">
+                    <div class="col-4" style="width: 125px;">
                         <input class="form-check-input" type="radio" name="volante_torcido" value="Sim"
                             id="flexRadioDefaultSim11">
                         <label class="form-check-label" for="flexRadioDefaultSim11">
@@ -2767,9 +2861,7 @@
                             </div>                  
                             <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTwenty">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwenty" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwenty">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwenty" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwenty" style="width: 300px;">
                 Ambulancia
             </button>
         </h2>
@@ -2848,7 +2940,7 @@
         </div>
         <div class="botao" style="display: flex; width: 400px;
     justify-content: center;">
-        <input class="btn btn-primary" type="submit" value="Finalizar ocorrencia" style="width: 100%; background-color: green; border:radius: 0px; display: flex; justify-content: center">
+        <input class="btn btn-primary" type="submit" value="Finalizar ocorrencia" style="width: 40%; background-color: green; border:radius: 0px; display: flex; justify-content: center; margin-top: 15px">
         </div>
         </form>
         <footer class="text-center text-lg-start">
