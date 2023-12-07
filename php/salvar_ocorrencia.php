@@ -536,84 +536,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erro ao inserir dados: " . $conn->error;
     }
 
-                           
-                          
-    // $local1 = $_POST["local1"];
-    // $lado1 = $_POST["lado1"];
-    // $face1 = $_POST["face1"];
-    // $tipo1 = $_POST["tipo1"];
-    // $local2 = $_POST["local2"];
-    // $lado2 = $_POST["lado2"];
-    // $face2 = $_POST["face2"];
-    // $tipo2 = $_POST["tipo2"];
-    // $local3 = $_POST["local3"];
-    // $lado3 = $_POST["lado3"];
-    // $face3 = $_POST["face3"];
-    // $tipo3 = $_POST["tipo3"];
-    // $local4 = $_POST["local4"];
-    // $lado4 = $_POST["lado4"];
-    // $face4 = $_POST["face4"];
-    // $tipo4 = $_POST["tipo4"];
-    // $Cabeca_Value = $_POST["Cabeca_Value"];
-    // $Pescoco_Value = $_POST["Pescoco_Value"];
-    // $Tant_Value = $_POST["Tant_Value"];
-    // $Tpos_Value = $_POST["Tpos_Value"];
-    // $Genit_Value = $_POST["Genit_Value"];
-    // $MID_Value = $_POST["MID_Value"];
-    // $MIE_Value = $_POST["MIE_Value"];
-    // $MSD_Value = $_POST["MSD_Value"];
-    // $MSE_Value = $_POST["MSE_Value"];
-
-    // // Insere os dados na tabela localizacao_dos_traumas
-    // $sql_localizacao_traumas = "INSERT INTO localizacao_dos_traumas  (local1, lado1, face1, tipo1, local2, lado2, face2, tipo2,  local3, lado3, face3,
-    //  tipo3, local4, lado4, face4, tipo4, cabeca, pescoco, t_ant, t_pos, genit, MID, MIE, MSD, MSE)
-    // VALUES ('$local1', '$lado1', '$face1', '$tipo1', '$local2', '$lado2', '$face2', '$tipo2', '$local3', '$lado3', '$face3', '$tipo3', '$local4', '$lado4',
-    //  '$face4', '$tipo4', '$Cabeca_Value', '$Pescoco_Value', '$Tant_Value', '$Tpos_Value', '$Genit_Value', '$MID_Value', '$MIE_Value', '$MSD_Value', '$MSE_Value')";
-
-    // // Executar a query para localizacao_dos_traumas
-    // if($conn->query($sql_localizacao_traumas) === TRUE) {
-    //     $last_localizacao_traumas_id = $conn->insert_id;
-    // }else{
-    //     echo "Erro ao inserir dados:". $conn->error;
-    // }
-
-                   
-      
-    // if(isset($_FILES['imagem_recusa'])){
-    //     $imagem_recusa = $_FILES['imagem_recusa'];
-
-    //     if($imagem_recusa['error'])
-    //     die("Falha ao enviar o arquivo.");
-
-    //     if($imagem_recusa['size'] > 2097152)
-    //     die("Arquivo muito grande! Máx: 2MB");
-
-    //     $pasta = "../TermoRecusa/";
-    //     $nomeDoArquivo = $imagem_recusa['name'];
-    //     $novoNomeArquivo = uniqid();
-    //     $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
-
-    //     if($extensao != "jpg" && $extensao != "png")
-    //     die("Tipo de arquivo inválido!");
-
-    //     $path = $pasta . $novoNomeArquivo . "." . $extensao;
-
-    //     $next = move_uploaded_file($imagem_recusa["tmp_name"], $path);
-    //     if($next){
-    //         $conn->query("INSERT INTO termo_recusa(nome_imagem, caminho_imagem) VALUES('$nomeDoArquivo', '$path')");
-    //     $last_termo_id = $conn->insert_id;
-    //     }else{
-    //     echo "Falha ao enviar o arquivo";
-    //     }
-    // }
-
-//   // Certifique-se de que a variável $user_id esteja definida antes de usá-la
-//   if (!isset($user_id)) {
-//     // Defina $user_id conforme necessário ou redirecione para a página de login
-//     header("Location: login.php");
-//     exit();
-// }
-
+    if(isset($_FILES['arquivo'])){
+        $arquivo = $_FILES['arquivo'];
+    
+        echo "arquivo enviado";
+    
+        if($arquivo['error'])
+            die("falha ao enviar arquivo");
+    
+    
+        $pasta = "../upload/arquivos/";
+        $nomeDoArquivo = $arquivo['name'];
+        $novoNomeDoArquivo = uniqid();
+        $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+        
+        // echo "=====".$pasta.$nomeDoArquivo.$novoNomeDoArquivo.$extensao."=====";
+        echo "=====".$arquivo["tmp_name"].$pasta.$novoNomeDoArquivo.".".$extensao."=====";
+    
+        $path = $pasta.$novoNomeDoArquivo.".".$extensao;
+        $deu_certo = move_uploaded_file($arquivo["tmp_name"],  $path);
+        if($deu_certo){
+            $executado=$conn->query("INSERT INTO arquivos (nome, path, data_upload) VALUES('$nomeDoArquivo', '$path', null)") or die($conn->error);
+            print_r($executado);
+            echo "<p>Arquivo Enviado com Sucesso!</p>";
+    
+        }else
+            echo "<p>Falha ao enviar arquivo</p>";
+    
+    
+    
+    
+        // $extensao = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));/
+    
+    
+    }
+    
     // Inserir todos os dados na tabela fichas
     $sql_fichas = "INSERT INTO fichas (data_ficha, idAnamnese_Emergencia_Medica, idAnamnese_Gestacional, idAvaliacao_Cinematica, idAvaliacao_Glasgow, idMateriais_Utilizados_Deixados, idMateriais_Utilizados_Descartavel, idObjetos_Recolhidos, idObservacoes_Importantes, 
     idPaciente, idProblemas_Encontrados, idProcedimentos_Efetuados, idSinais_e_Sintomas, idSinais_Vitais, idTipo_de_Ocorrencia,  idDecisao_Transporte, idDetalhes_Viagem, idForma_de_Conducao, idTransporte_Vitima_Era) 
@@ -624,6 +581,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executar a query para fichas
     if ($conn->query($sql_fichas) === TRUE) {
+
         echo "Registro Salvo com Sucesso";
     } else {
         echo "Erro ao inserir na tabela fichas: " . $conn->error;
@@ -633,7 +591,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 } else {
     // Se o formulário não foi enviado redireciona para a página inicial
-    header("Location: index.php");
+    header("Location: pagina_inicial.php");
     exit();
 }
 

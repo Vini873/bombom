@@ -3,6 +3,7 @@
 session_start();
 session_unset();
 session_destroy();
+// Inicia  sessão
 session_start();
 
 include("dbdb.php");
@@ -25,12 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
 
         // Verifica se a senha fornecida corresponde a senha armazenada
         if ($senha == $usuario_db['senha']) {
-            $_SESSION['id_usuario'] = $usuario_db['id'];
+            $_SESSION['id_usuario'] = $usuario_db['id_usuario'];
             $_SESSION['nome'] = $usuario_db['nome'];
             $_SESSION['loggedIn'] = true;
 
             // Verifica se o usuário é um administrador
-            if ($usuario_db['tipo'] === 'admin') {
+            if ($usuario_db['tipo_usuario'] === 'admin') {
                 $_SESSION['admin'] = true;
             }
 

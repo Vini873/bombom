@@ -127,7 +127,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne" style="width: 300px;">
-                Detalhes Paciente
+                Info. Paciente
             </button>
         </h2>
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
@@ -152,7 +152,7 @@
                             <div class="row">
                                 <div class="col">
                                     <input type="text" name="hospital" class="form-control"
-                                        placeholder="Nome do hospital:" aria-label="nomeH_DP">
+                                        placeholder="Hospital:" aria-label="nomeH_DP">
                                 </div>
                             </div>
                             <div class="row">
@@ -347,7 +347,7 @@
                                     name="Queda_Nivel">
                                 <label class="form-check-label" for="flexCheckDefault16"
                                     style="position: absolute; top: 0;left: 32px;">
-                                    Queda nivel > 2M
+                                    Queda nivel + 2M
                                 </label>
                             </div>
                             <div class="row" style="position: relative;">
@@ -847,7 +847,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix" style="width: 300px;">
-                Localização dos traumas
+                Localização traumas
             </button>
         </h2>
         <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
@@ -1664,7 +1664,7 @@
                             <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTwelve">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwelve" style="width: 300px;">
-                Procedimentos efetuados
+                Procedimentos feitos
             </button>
         </h2>
         <div id="panelsStayOpen-collapseTwelve" class="accordion-collapse collapse"
@@ -2067,7 +2067,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingThirteen">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThirteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseThirteen" style="width: 300px;">
-                Materiais utilizados descartável
+                Materiais descartável
             </button>
         </h2>
         <div id="panelsStayOpen-collapseThirteen" class="accordion-collapse collapse"
@@ -2373,8 +2373,14 @@
         <div id="panelsStayOpen-collapseFifteen" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingFifteen">
             <div class="accordion-body" style="width: 300px">
-            <label for="inputImagem">Selecione uma imagem:</label>
-        <input type="file" name="inputImagem" id="inputImagem" accept="image/*">
+
+
+    <!-- <form method="POST" enctype="multipart/form-data" action="recusa.php"> -->
+        <p><b><label for="">Selecione o Arquivo</label></b>
+        <input name="arquivo" type="file"></p>
+        <!-- <button name="upload" type="submit">Enviar Aquivos</button>
+    </form> -->
+
         <br>
 
             </div>
@@ -2383,7 +2389,7 @@
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingSixteen">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSixteen" aria-expanded="false" aria-controls="panelsStayOpen-collapseSixteen" style="width: 300px;">
-                Observações importantes
+                Observações
             </button>
         </h2>
         <div id="panelsStayOpen-collapseSixteen" class="accordion-collapse collapse"
