@@ -1,5 +1,7 @@
 <?php
 
+include("conexao.php");
+
 var_dump($_FILES);
 
 if(isset($_FILES['arquivo'])){
@@ -19,10 +21,13 @@ if(isset($_FILES['arquivo'])){
     // echo "=====".$pasta.$nomeDoArquivo.$novoNomeDoArquivo.$extensao."=====";
     echo "=====".$arquivo["tmp_name"].$pasta.$novoNomeDoArquivo.".".$extensao."=====";
 
-    $deu_certo = move_uploaded_file($arquivo["tmp_name"],  $pasta . $novoNomeDoArquivo . "." . $extensao);
-    if($deu_certo)
-        echo "<p>Arquivo Enviado com Sucesso! Para acessá-lo, clique aqui: <a href=\"arquivos/$novoNomeDoArquivo.$extensao\">clique aqui</a></p>";
-    else
+    $path = $pasta.$novoNomeDoArquivo.".".$extensao;
+    $deu_certo = move_uploaded_file($arquivo["tmp_name"],  $path);
+    if($deu_certo){
+        $mysqli->query("INSERT INTO arquivos (nome, path, data_upload VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
+        echo "<p>Arquivo Enviado com Sucesso!</p>";
+
+    }else
         echo "<p>Falha ao enviar arquivo</p>";
 
 
