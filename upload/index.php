@@ -2,7 +2,7 @@
 
 include("conexao.php");
 
-var_dump($_FILES);
+//var_dump($_FILES);
 
 if(isset($_FILES['arquivo'])){
     $arquivo = $_FILES['arquivo'];
@@ -24,7 +24,7 @@ if(isset($_FILES['arquivo'])){
     $path = $pasta.$novoNomeDoArquivo.".".$extensao;
     $deu_certo = move_uploaded_file($arquivo["tmp_name"],  $path);
     if($deu_certo){
-        $mysqli->query("INSERT INTO arquivos (nome, path, data_upload VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
+        $conn->query("INSERT INTO arquivos (nome, path, data_upload) VALUES('$nomeDoArquivo', '$path', null)") or die($conn->error);
         echo "<p>Arquivo Enviado com Sucesso!</p>";
 
     }else
