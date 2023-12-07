@@ -5,23 +5,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Incluir o arquivo de conexão com o banco de dados
     include('dbdb.php');
 
-//Pegar o id do usuário que está preenchendo a tabela
-    if (isset($_SESSION['id_usuario'])) {
-        $user_id = $_SESSION['id_usuario'];
-    }
-
                      
           
-    $data_ocorrencia = $_POST['date'];
-    $genero_paciente = isset($_POST['genero_DP']) ? $_POST['genero_DP'] : '';
-    $nome_hospital = $_POST['nome_hospital_DP'];
-    $nome_paciente = $_POST['nome_paciente_DP'];
-    $idade_paciente = $_POST['idade_paciente_DP'];
-    $CPF_paciente = $_POST['cpf_paciente_DP'];
-    $telefone_paciente = $_POST['telefone_paciente_DP'];
-    $nome_acompanhante = $_POST['acompanhante_DP'];
-    $idade_acompanhante = $_POST['idade_acompanhante_DP'];
-    $local_da_ocorrencia = $_POST['local_ocorrencia_DP'];
+    $data_ocorrencia = $_POST['data_ocorrencia'];
+    $genero_paciente = isset($_POST['genero_paciente']) ? $_POST['genero_paciente'] : '';
+    $nome_hospital = $_POST['hospital'];
+    $nome_paciente = $_POST['nome'];
+    $idade_paciente = $_POST['idade'];
+    $CPF_paciente = $_POST['cpf'];
+    $telefone_paciente = $_POST['telefone'];
+    $nome_acompanhante = $_POST['nome_acompanhante'];
+    $idade_acompanhante = $_POST['idade_acompanhante'];
+    $local_da_ocorrencia = $_POST['local_ocorrencia'];
 
     // Verificar se o CPF tem 11 digitos
     if (!empty($CPF_paciente) && !preg_match('/^\d{11}$/', $CPF_paciente)) {
@@ -37,36 +32,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
                       
             
-    $causado_por_animais = isset($_POST['Causado_Por_Animais']) ? 1 : null;
-    $com_meio_de_transporte = isset($_POST['Com_Meio_De_Transporte']) ? 1 : null;
-    $desmoronamento_deslizamento = isset($_POST['Desmoronamento_Deslizamento']) ? 1 : null;
+    $causado_por_animais = isset($_POST['Animais']) ? 1 : null;
+    $com_meio_de_transporte = isset($_POST['Meio_De_Transporte']) ? 1 : null;
+    $desmoronamento_deslizamento = isset($_POST['Deslizamento']) ? 1 : null;
     $emergencia_medica = isset($_POST['Emergencia_Medica']) ? 1 : null;
-    $queda_de_altura_2m = isset($_POST['Queda_De_Altura_2M']) ? 1 : null;
-    $tentativa_de_suicidio = isset($_POST['Tentativa_De_Suicidio']) ? 1 : null;
-    $queda_propria_altura = isset($_POST['Queda_Propria_Altura']) ? 1 : null;
+    $queda_de_altura_2m = isset($_POST['Queda_De_Altura']) ? 1 : null;
+    $tentativa_de_suicidio = isset($_POST['Tentativa_Suicidio']) ? 1 : null;
+    $queda_propria_altura = isset($_POST['Queda_P_Altura']) ? 1 : null;
     $afogamento = isset($_POST['Afogamento']) ? 1 : null;
     $agressao = isset($_POST['Agressao']) ? 1 : null;
     $atropelamento = isset($_POST['Atropelamento']) ? 1 : null;
-    $choque_eletrico = isset($_POST['Choque_Eletrico']) ? 1 : null;
+    $choque_eletrico = isset($_POST['Choque']) ? 1 : null;
     $desabamento = isset($_POST['Desabamento']) ? 1 : null;
     $domestico = isset($_POST['Domestico']) ? 1 : null;
     $esportivo = isset($_POST['Esportivo']) ? 1 : null;
     $intoxicacao = isset($_POST['Intoxicacao']) ? 1 : null;
-    $queda_bicicleta = isset($_POST['Queda_Bicicleta']) ? 1 : null;
+    $queda_bicicleta = isset($_POST['Queda_Bike']) ? 1 : null;
     $queda_moto = isset($_POST['Queda_Moto']) ? 1 : null;
-    $queda_nivel_2m = isset($_POST['Queda_Nivel_2M']) ? 1 : null;
+    $queda_nivel_2m = isset($_POST['Queda_Nivel']) ? 1 : null;
     $trabalho = isset($_POST['Trabalho']) ? 1 : null;
     $transferencia = isset($_POST['Transferencia']) ? 1 : null;
-    $outro_campo = isset($_POST['Outro_Campo']) ? $_POST['Outro_Campo'] : null;
-    $outro_campo_text = isset($_POST['Outro_Campo_Text']) ? mysqli_real_escape_string($conn, $_POST['Outro_Campo_Text']) : null;
+    $outro_campo = isset($_POST['Outroo']) ? $_POST['Outro'] : null;
+    $outro_campo_text = isset($_POST['Outro_Text']) ? mysqli_real_escape_string($conn, $_POST['Outro_Text']) : null;
 
 
-    // Inserir no banco de dados para tipo_de_ocorrencia
+    // Inserir no banco de dados para ficha_tipo_de_ocorrencia
     $sql_tipo_ocorrencia = "INSERT INTO tipo_de_ocorrencia (
-    Causado_Por_Animais, Com_Meio_De_Transporte, Desmoronamento_Deslizamento, Emergencia_Medica,
-    Queda_De_Altura_2M, Tentativa_De_Suicidio, Queda_Propria_Altura, Afogamento, Agressao,
-    Atropelamento, Choque_Eletrico, Desabamento, Domestico, Esportivo, Intoxicacao,
-    Queda_Bicicleta, Queda_Moto, Queda_Nivel_2M, Trabalho, Transferencia, Outro_Campo) 
+        Causado_Por_Animais, Com_Meio_De_Transporte, Desmoronamento_Deslizamento, Emergencia_Medica,
+        Queda_De_Altura_2M, Tentativa_De_Suicidio, Queda_Propria_Altura, Afogamento, Agressao,
+        Atropelamento, Choque_Eletrico, Desabamento, Domestico, Esportivo, Intoxicacao,
+        Queda_Bicicleta, Queda_Moto, Queda_Nivel_2M, Trabalho, Transferencia, Outro_Campo) 
                             VALUES (
                             " . ($causado_por_animais ?? 'NULL') . ",
                             " . ($com_meio_de_transporte ?? 'NULL') . ",
@@ -140,8 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO sinais_vitais (pressao_arterial0, pressao_arterial1, pulso, respiracao, saturacao, hgt, temperatura, perfusao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssss", $pressao_arterial0, $pressao_arterial1, $pulso, $respiracao, $saturacao, $hgt, $temperatura, $perfusao);
 
-    $pressao_arterial0 = getSafePost('Pressão_arterial0');
-    $pressao_arterial1 = getSafePost('Pressão_arterial1');
+    $pressao_arterial0 = getSafePost('Pressão_arterial1');
+    $pressao_arterial1 = getSafePost('Pressão_arterial2');
     $pulso = getSafePost('Pulso');
     $respiracao = getSafePost('Respiracao');
     $saturacao = getSafePost('Saturação');
@@ -236,9 +231,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                      
           
-    $abertura = isset($_POST['Abertura']) ? $_POST['Abertura'] : '';
-    $respostaVerbal = isset($_POST['RespostaVerbal']) ? $_POST['RespostaVerbal'] : '';
-    $respostaMotora = isset($_POST['RespostaMotora']) ? $_POST['RespostaMotora'] : '';
+    $abertura = isset($_POST['Abertura_ocular']) ? $_POST['Abertura_ocular'] : '';
+    $respostaVerbal = isset($_POST['Resposta_Verbal']) ? $_POST['Resposta_Verbal'] : '';
+    $respostaMotora = isset($_POST['Resposta_Motora']) ? $_POST['Resposta_Motora'] : '';
 
     // Inserir dados no banco de dados para avaliacao_glasgow
     $sql_glasgow = "INSERT INTO avaliacao_glasgow (Abertura_Ocular, Resposta_Verbal, Resposta_Motora)
@@ -253,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                      
           
-    $abdomen_sensivel_rigido = isset($_POST['Abdomen_Sensivel_Rigido']) ? 1 : 0;
+    $abdomen_sensivel_rigido = isset($_POST['Abdomen_Rigido']) ? 1 : 0;
     $afundamento_cranio = isset($_POST['Afundamento_Cranio']) ? 1 : 0;
     $agitacao = isset($_POST['Agitacao']) ? 1 : 0;
     $amnesia = isset($_POST['Amnesia']) ? 1 : 0;
@@ -312,7 +307,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Cefaleia, Cianose_Labios, Cianose_Extremidade, Convulsao, Decorticacao, Deformidade, Descerebracao, Desmaio, Desvio_Traqueia, Despineia, Dor_Local, Edema_Generalizado, 
     Edema_Localizado, Enfisema_Subcutaneo, Extase_Jugular, Face_Palida, Hemorragia_Interna, Hemorragia_Externa, Hipertensao, Hipotensao, Nauseas_Vomitos, Nasoragia, Obito, 
     Otorreia, Otorragia, OVACE, Parada_Cardiaca, Parada_Respiratoria, Priaprismo, Prurido_Pele, Pupilas_Anisocoria, Pupilas_Isocoria, Pupilas_Midriase, Pupilas_Miose, 
-    Pupilas_Reagente, Pupilas_Nao_Reagente, Sede, Sinal_Battle, Sinal_Guaxinim, Sudorese, Taquipneia, Taquicardia, Tontura, Observacoes) 
+    Pupilas_reagente, Pupilas_nao_reagente, Sede, Sinal_Battle, Sinal_Guaxinim, Sudorese, Taquipneia, Taquicardia, Tontura, Observacoes) 
     VALUES ($abdomen_sensivel_rigido, $afundamento_cranio, $agitacao, $amnesia, $angna_peito, $apneia, $bradicardia, $bradipneia, $bronco_aspiracao, 
     $cefaleia, $cianose_labios, $cianose_extremidade, $convulsao, $decorticacao, $deformidade, $descerebracao, $desmaio, $desvio_traqueia, $despineia, 
     $dor_local, $edema_generalizado, $edema_localizado, $enfisema_subcutaneo, $extase_jugular, $face_palida, $hemorragia_interna, $hemorragia_externa, 
@@ -329,14 +324,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                    
       
-    $NumeroUSB = mysqli_real_escape_string($conn, $_POST['NumeroUSB']);
-    $CodigoIR = mysqli_real_escape_string($conn, $_POST['CodigoIR']);
-    $NumeroOcorrencia = isset($_POST['NumeroOcorrencia']) ? mysqli_real_escape_string($conn, $_POST['NumeroOcorrencia']) : null;
-    $CodigoPS = mysqli_real_escape_string($conn, $_POST['CodigoPS']);
+    $NumeroUSB = mysqli_real_escape_string($conn, $_POST['Numero_viatura']);
+    $CodigoIR = mysqli_real_escape_string($conn, $_POST['Codigo_IR']);
+    $NumeroOcorrencia = isset($_POST['Numero_Ocorrencia']) ? mysqli_real_escape_string($conn, $_POST['Numero_Ocorrencia']) : null;
+    $CodigoPS = mysqli_real_escape_string($conn, $_POST['Codigo_PS']);
     $Desp = mysqli_real_escape_string($conn, $_POST['Desp']);
     $HCH = mysqli_real_escape_string($conn, $_POST['HCH']);
-    $KMFinal = mysqli_real_escape_string($conn, $_POST['KMFinal']);
-    $CodigoSIASUS = mysqli_real_escape_string($conn, $_POST['CodigoSIASUS']);
+    $KMFinal = mysqli_real_escape_string($conn, $_POST['KM_Final']);
+    $CodigoSIASUS = mysqli_real_escape_string($conn, $_POST['Codigo_SIASUS']);
 
     // Inserir dados na tabela transporte_detalhes_viagem
     $sql_detalhes_viagem = "INSERT INTO transporte_detalhes_viagem (NumeroUSB, CodigoIR, NumeroOcorrencia, CodigoPS, Desp, HCH, KMFinal, CodigoSIASUS)
@@ -390,9 +385,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transporte = isset($_POST['Transporte']) ? $_POST['Transporte'] : null;
     $outros = isset($_POST['Outros']) ? $_POST['Outros'] : null;
 
+
     // Insere os dados na tabela problemas_encontrados
     $sql_problemas = "INSERT INTO problemas_encontrados (psiquiatrico, obstetrico, respiratorio, diabetes, transporte, outros) 
     VALUES('$psiquiatrico', '$obstetrico', '$respiratorio','$diabetes','$transporte','$outros')";
+
 
     // Executar a query para problemas_encontrados
     if($conn->query($sql_problemas) === TRUE) {
